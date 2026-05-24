@@ -1,0 +1,144 @@
+openapi: 3.1.0
+info:
+  title: OP Mainnet JSON-RPC
+  description: |
+    Public Ethereum JSON-RPC endpoint for OP Mainnet (chain ID 10) and the
+    OP Sepolia testnet (chain ID 11155420). All standard Ethereum `eth_*`
+    namespace methods are supported plus Optimism extensions used for L1
+    fee estimation and rollup-specific data.
+
+    All RPC calls are POSTed to the root path of the endpoint with a
+    standard JSON-RPC 2.0 envelope. The public endpoints are open
+    (unauthenticated) and rate limited; production teams typically route
+    through Alchemy, QuickNode, Infura, or a self-hosted op-geth/op-node
+    pair.
+  version: "1.0.0"
+  contact:
+    name: Optimism
+    url: https://docs.optimism.io
+servers:
+  - url: https://mainnet.optimism.io
+    description: OP Mainnet (chain ID 10) public RPC
+  - url: https://sepolia.optimism.io
+    description: OP Sepolia (chain ID 11155420) public RPC
+tags:
+  - name: JSON-RPC
+    description: Standard Ethereum JSON-RPC method invocation.
+paths:
+  /:
+    post:
+      tags: [JSON-RPC]
+      summary: Invoke a JSON-RPC method
+      description: |
+        Execute any supported Ethereum JSON-RPC method (e.g. `eth_blockNumber`,
+        `eth_chainId`, `eth_getBalance`, `eth_call`, `eth_getTransactionByHash`,
+        `eth_getLogs`, `net_version`, `web3_clientVersion`).
+      operationId: invokeJsonRpc
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/JsonRpcRequest'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/JsonRpcRequest'
+            examples:
+              ethBlockNumber:
+                summary: Get latest block number
+                value:
+                  jsonrpc: "2.0"
+                  id: 1
+                  method: eth_blockNumber
+                  params: []
+              ethChainId:
+                summary: Get chain ID
+                value:
+                  jsonrpc: "2.0"
+                  id: 2
+                  method: eth_chainId
+                  params: []
+              ethGetBalance:
+                summary: Get account balance
+                value:
+                  jsonrpc: "2.0"
+                  id: 3
+                  method: eth_getBalance
+                  params:
+                    - "0x0000000000000000000000000000000000000000"
+                    - "latest"
+              ethCall:
+                summary: Read-only contract call
+                value:
+                  jsonrpc: "2.0"
+                  id: 4
+                  method: eth_call
+                  params:
+                    - to: "0x4200000000000000000000000000000000000006"
+                      data: "0x06fdde03"
+                    - "latest"
+      responses:
+        "200":
+          description: JSON-RPC response (single or batch).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/JsonRpcResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/JsonRpcResponse'
+        "429":
+          description: Rate limit exceeded on the public endpoint.
+components:
+  schemas:
+    JsonRpcRequest:
+      type: object
+      required: [jsonrpc, method, id]
+      properties:
+        jsonrpc:
+          type: string
+          const: "2.0"
+        id:
+          oneOf:
+            - type: string
+            - type: integer
+        method:
+          type: string
+          description: |
+            Name of the Ethereum JSON-RPC method, e.g. `eth_blockNumber`,
+            `eth_chainId`, `eth_call`, `eth_getLogs`, `eth_getBalance`,
+            `eth_sendRawTransaction`.
+        params:
+          type: array
+          items: {}
+    JsonRpcResponse:
+      type: object
+      required: [jsonrpc, id]
+      properties:
+        jsonrpc:
+          type: string
+          const: "2.0"
+        id:
+          oneOf:
+            - type: string
+            - type: integer
+            - type: "null"
+        result:
+          description: Method result; type depends on the method.
+        error:
+          $ref: '#/components/schemas/JsonRpcError'
+    JsonRpcError:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        data:
+          description: Optional error data.
+externalDocs:
+  description: Optimism Superchain Networks Docs
+  url: https://docs.optimism.io/superchain/networks
