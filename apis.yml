@@ -19,7 +19,7 @@ tags:
   - Rollup
   - Bridge
 created: '2026-05-23'
-modified: '2026-05-23'
+modified: '2026-05-29'
 specificationVersion: '0.19'
 apis:
   - aid: optimism:mainnet-rpc
@@ -39,6 +39,8 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.optimism.io/superchain/networks
+      - type: AsyncAPI
+        url: https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml
   - aid: optimism:sepolia-rpc
     name: OP Sepolia JSON-RPC
     description: >-
@@ -53,6 +55,8 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.optimism.io/superchain/networks
+      - type: AsyncAPI
+        url: https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml
   - aid: optimism:bridge
     name: Optimism Bridge (Standard Bridge)
     description: >-

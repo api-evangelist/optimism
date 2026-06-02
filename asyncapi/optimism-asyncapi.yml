@@ -1,0 +1,703 @@
+asyncapi: 2.6.0
+info:
+  title: Optimism (OP Stack) WebSocket JSON-RPC API
+  version: 1.0.0
+  description: >
+    AsyncAPI 2.6 description of the WebSocket JSON-RPC subscription surface exposed
+    by op-geth — the OP Stack execution client used by OP Mainnet (chain ID 10) and
+    OP Sepolia (chain ID 11155420).
+
+
+    ## Public WebSocket availability
+
+
+    The Optimism documentation is explicit that the public HTTP RPC endpoints
+    (`https://mainnet.optimism.io`, `https://sepolia.optimism.io`) are rate
+    limited and **do not** accept WebSocket connections. The only publicly
+    documented WSS endpoints are the rate-limited Flashblocks preconfirmation
+    streams (`wss://op-mainnet-fb-ws-pub.optimism.io/ws` and
+    `wss://op-sepolia-fb-ws.optimism.io/ws`). Those streams emit binary SSZ
+    `FlashblocksPayloadV1` messages produced by Rollup Boost — they are **not**
+    a JSON-RPC `eth_subscribe` surface, so they cannot be modelled as standard
+    JSON-RPC subscriptions and are documented separately below for completeness.
+
+
+    For the standard `eth_subscribe` topics described in this document
+    (`newHeads`, `logs`, `newPendingTransactions`, `syncing`) Optimism directs
+    developers to either (1) run their own op-geth + op-node stack or (2) use
+    a third-party RPC provider such as Alchemy, QuickNode, or Infura. The
+    `provider` server below is therefore parameterised via `serverVariables`
+    so the consumer can plug in the host of the provider they use.
+  contact:
+    name: Optimism Docs
+    url: https://docs.optimism.io
+  license:
+    name: MIT
+    url: https://github.com/ethereum-optimism/optimism/blob/develop/LICENSE
+  tags:
+    - name: optimism
+    - name: op-stack
+    - name: op-geth
+    - name: json-rpc
+    - name: websocket
+    - name: eth_subscribe
+
+defaultContentType: application/json
+
+servers:
+  flashblocks-mainnet:
+    url: op-mainnet-fb-ws-pub.optimism.io/ws
+    protocol: wss
+    description: >
+      Public Flashblocks preconfirmation stream for OP Mainnet. Strictly
+      rate-limited per Optimism documentation. Streams binary SSZ-encoded
+      `FlashblocksPayloadV1` messages produced by Rollup Boost — this is a
+      one-way push stream, **not** a JSON-RPC `eth_subscribe` endpoint, so the
+      JSON-RPC channels defined in this document do not apply here.
+  flashblocks-sepolia:
+    url: op-sepolia-fb-ws.optimism.io/ws
+    protocol: wss
+    description: >
+      Public Flashblocks preconfirmation stream for OP Sepolia. Same caveats
+      as the OP Mainnet Flashblocks endpoint above.
+  provider:
+    url: '{providerHost}/{providerPath}'
+    protocol: wss
+    description: >
+      Generic op-geth WebSocket endpoint hosted by a third-party provider
+      (Alchemy, QuickNode, Infura, etc.) or by a self-hosted op-geth node.
+      Optimism does not operate a public `eth_subscribe`-capable WebSocket;
+      developers must supply their own.
+    variables:
+      providerHost:
+        description: >
+          Host (and optional port) of the WebSocket provider — for example
+          `opt-mainnet.g.alchemy.com`, `optimism-mainnet.infura.io`,
+          `optimism-mainnet.core.chainstack.com`, or `localhost:8546` for a
+          self-hosted op-geth node.
+        default: opt-mainnet.g.alchemy.com
+      providerPath:
+        description: >
+          Provider-specific path (often containing an API key), for example
+          `v2/<API_KEY>` for Alchemy or `ws/v3/<PROJECT_ID>` for Infura. Leave
+          blank for self-hosted op-geth (default endpoint serves at `/`).
+        default: v2/demo
+
+channels:
+  eth_subscribe.newHeads:
+    description: >
+      Subscription that pushes a notification each time a new block header is
+      added to the chain. Standard op-geth (upstream go-ethereum) behaviour;
+      the OP Stack does not add custom fields to the header itself, though
+      consumers should expect L2-specific block production cadence (~2s on
+      OP Mainnet, faster with Flashblocks preconfirmations).
+    bindings:
+      ws:
+        bindingVersion: '0.1.0'
+    publish:
+      operationId: subscribeNewHeads
+      summary: Subscribe to new block headers (`eth_subscribe("newHeads")`).
+      message:
+        $ref: '#/components/messages/SubscribeNewHeadsRequest'
+    subscribe:
+      operationId: onNewHead
+      summary: Receive a notification for each new block header.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/SubscribeResponse'
+          - $ref: '#/components/messages/NewHeadNotification'
+
+  eth_subscribe.logs:
+    description: >
+      Subscription that pushes a notification for every log matching a filter.
+      Filter parameters mirror upstream `eth_getLogs` (`address`, `topics`).
+      Log entries include the standard fields plus may be associated with
+      receipts that carry OP Stack L1 fee fields (`l1GasUsed`, `l1GasPrice`,
+      `l1Fee`, `l1FeeScalar`) when fetched via `eth_getTransactionReceipt`.
+    bindings:
+      ws:
+        bindingVersion: '0.1.0'
+    publish:
+      operationId: subscribeLogs
+      summary: Subscribe to event logs (`eth_subscribe("logs", filter)`).
+      message:
+        $ref: '#/components/messages/SubscribeLogsRequest'
+    subscribe:
+      operationId: onLog
+      summary: Receive a notification for each matching log entry.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/SubscribeResponse'
+          - $ref: '#/components/messages/LogNotification'
+
+  eth_subscribe.newPendingTransactions:
+    description: >
+      Subscription that pushes the hash of every new transaction that enters
+      the mempool. By default only transaction hashes are streamed; passing
+      `true` as the second parameter requests the full transaction object
+      (op-geth honours the same flag as upstream geth).
+    bindings:
+      ws:
+        bindingVersion: '0.1.0'
+    publish:
+      operationId: subscribeNewPendingTransactions
+      summary: Subscribe to pending-transaction notifications.
+      message:
+        $ref: '#/components/messages/SubscribeNewPendingTxRequest'
+    subscribe:
+      operationId: onPendingTransaction
+      summary: Receive a notification for each new pending transaction.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/SubscribeResponse'
+          - $ref: '#/components/messages/PendingTxNotification'
+
+  eth_subscribe.syncing:
+    description: >
+      Subscription that emits when the node enters or exits sync. The
+      notification is either `false` (synced) or a `SyncStatus` object
+      describing progress. Behaviour matches upstream go-ethereum / op-geth.
+    bindings:
+      ws:
+        bindingVersion: '0.1.0'
+    publish:
+      operationId: subscribeSyncing
+      summary: Subscribe to sync-status changes (`eth_subscribe("syncing")`).
+      message:
+        $ref: '#/components/messages/SubscribeSyncingRequest'
+    subscribe:
+      operationId: onSyncing
+      summary: Receive sync-status change notifications.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/SubscribeResponse'
+          - $ref: '#/components/messages/SyncingNotification'
+
+  eth_unsubscribe:
+    description: >
+      Cancel an active subscription using the id returned from the original
+      `eth_subscribe` call.
+    bindings:
+      ws:
+        bindingVersion: '0.1.0'
+    publish:
+      operationId: unsubscribe
+      summary: Cancel a subscription.
+      message:
+        $ref: '#/components/messages/UnsubscribeRequest'
+    subscribe:
+      operationId: onUnsubscribeResponse
+      summary: Receive the unsubscribe acknowledgement.
+      message:
+        $ref: '#/components/messages/UnsubscribeResponse'
+
+components:
+  messages:
+    SubscribeNewHeadsRequest:
+      name: SubscribeNewHeadsRequest
+      title: eth_subscribe newHeads request
+      summary: JSON-RPC request to subscribe to new block headers.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscribeNewHeadsRequestPayload'
+
+    SubscribeLogsRequest:
+      name: SubscribeLogsRequest
+      title: eth_subscribe logs request
+      summary: JSON-RPC request to subscribe to logs matching a filter.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscribeLogsRequestPayload'
+
+    SubscribeNewPendingTxRequest:
+      name: SubscribeNewPendingTxRequest
+      title: eth_subscribe newPendingTransactions request
+      summary: JSON-RPC request to subscribe to pending transactions.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscribeNewPendingTxRequestPayload'
+
+    SubscribeSyncingRequest:
+      name: SubscribeSyncingRequest
+      title: eth_subscribe syncing request
+      summary: JSON-RPC request to subscribe to sync status changes.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscribeSyncingRequestPayload'
+
+    SubscribeResponse:
+      name: SubscribeResponse
+      title: eth_subscribe response
+      summary: JSON-RPC response containing the subscription id.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscribeResponsePayload'
+
+    UnsubscribeRequest:
+      name: UnsubscribeRequest
+      title: eth_unsubscribe request
+      summary: JSON-RPC request to cancel a subscription.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/UnsubscribeRequestPayload'
+
+    UnsubscribeResponse:
+      name: UnsubscribeResponse
+      title: eth_unsubscribe response
+      summary: Boolean ack indicating the subscription was cancelled.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/UnsubscribeResponsePayload'
+
+    NewHeadNotification:
+      name: NewHeadNotification
+      title: newHeads subscription notification
+      summary: Notification carrying a new block header.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NewHeadNotificationPayload'
+
+    LogNotification:
+      name: LogNotification
+      title: logs subscription notification
+      summary: Notification carrying a single matching log entry.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/LogNotificationPayload'
+
+    PendingTxNotification:
+      name: PendingTxNotification
+      title: newPendingTransactions subscription notification
+      summary: Notification carrying a pending transaction hash (or full tx).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PendingTxNotificationPayload'
+
+    SyncingNotification:
+      name: SyncingNotification
+      title: syncing subscription notification
+      summary: Notification carrying the current sync status.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SyncingNotificationPayload'
+
+  schemas:
+    JsonRpcVersion:
+      type: string
+      enum:
+        - '2.0'
+
+    HexString:
+      type: string
+      pattern: '^0x[0-9a-fA-F]*$'
+
+    Hash32:
+      type: string
+      pattern: '^0x[0-9a-fA-F]{64}$'
+
+    Address:
+      type: string
+      pattern: '^0x[0-9a-fA-F]{40}$'
+
+    SubscribeNewHeadsRequestPayload:
+      type: object
+      required: [jsonrpc, id, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        id:
+          type: [integer, string]
+        method:
+          type: string
+          const: eth_subscribe
+        params:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            - type: string
+              const: newHeads
+      example:
+        jsonrpc: '2.0'
+        id: 1
+        method: eth_subscribe
+        params: [newHeads]
+
+    LogFilter:
+      type: object
+      description: Filter mirroring `eth_getLogs` semantics.
+      properties:
+        address:
+          oneOf:
+            - $ref: '#/components/schemas/Address'
+            - type: array
+              items:
+                $ref: '#/components/schemas/Address'
+        topics:
+          type: array
+          maxItems: 4
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/Hash32'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/Hash32'
+              - type: 'null'
+
+    SubscribeLogsRequestPayload:
+      type: object
+      required: [jsonrpc, id, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        id:
+          type: [integer, string]
+        method:
+          type: string
+          const: eth_subscribe
+        params:
+          type: array
+          minItems: 1
+          maxItems: 2
+          items:
+            - type: string
+              const: logs
+            - $ref: '#/components/schemas/LogFilter'
+      example:
+        jsonrpc: '2.0'
+        id: 2
+        method: eth_subscribe
+        params:
+          - logs
+          - address: '0x4200000000000000000000000000000000000006'
+            topics:
+              - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+
+    SubscribeNewPendingTxRequestPayload:
+      type: object
+      required: [jsonrpc, id, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        id:
+          type: [integer, string]
+        method:
+          type: string
+          const: eth_subscribe
+        params:
+          type: array
+          minItems: 1
+          maxItems: 2
+          items:
+            - type: string
+              const: newPendingTransactions
+            - type: boolean
+              description: When `true`, stream full transaction objects instead of hashes.
+      example:
+        jsonrpc: '2.0'
+        id: 3
+        method: eth_subscribe
+        params: [newPendingTransactions]
+
+    SubscribeSyncingRequestPayload:
+      type: object
+      required: [jsonrpc, id, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        id:
+          type: [integer, string]
+        method:
+          type: string
+          const: eth_subscribe
+        params:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            - type: string
+              const: syncing
+      example:
+        jsonrpc: '2.0'
+        id: 4
+        method: eth_subscribe
+        params: [syncing]
+
+    SubscribeResponsePayload:
+      type: object
+      required: [jsonrpc, id, result]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        id:
+          type: [integer, string]
+        result:
+          $ref: '#/components/schemas/HexString'
+      example:
+        jsonrpc: '2.0'
+        id: 1
+        result: '0x9cef478923ff08bf67fde6c64013158d'
+
+    UnsubscribeRequestPayload:
+      type: object
+      required: [jsonrpc, id, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        id:
+          type: [integer, string]
+        method:
+          type: string
+          const: eth_unsubscribe
+        params:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            - $ref: '#/components/schemas/HexString'
+      example:
+        jsonrpc: '2.0'
+        id: 10
+        method: eth_unsubscribe
+        params: ['0x9cef478923ff08bf67fde6c64013158d']
+
+    UnsubscribeResponsePayload:
+      type: object
+      required: [jsonrpc, id, result]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        id:
+          type: [integer, string]
+        result:
+          type: boolean
+      example:
+        jsonrpc: '2.0'
+        id: 10
+        result: true
+
+    BlockHeader:
+      type: object
+      description: Block header as emitted by op-geth's `newHeads` subscription.
+      properties:
+        parentHash:
+          $ref: '#/components/schemas/Hash32'
+        sha3Uncles:
+          $ref: '#/components/schemas/Hash32'
+        miner:
+          $ref: '#/components/schemas/Address'
+        stateRoot:
+          $ref: '#/components/schemas/Hash32'
+        transactionsRoot:
+          $ref: '#/components/schemas/Hash32'
+        receiptsRoot:
+          $ref: '#/components/schemas/Hash32'
+        logsBloom:
+          $ref: '#/components/schemas/HexString'
+        difficulty:
+          $ref: '#/components/schemas/HexString'
+        number:
+          $ref: '#/components/schemas/HexString'
+        gasLimit:
+          $ref: '#/components/schemas/HexString'
+        gasUsed:
+          $ref: '#/components/schemas/HexString'
+        timestamp:
+          $ref: '#/components/schemas/HexString'
+        extraData:
+          $ref: '#/components/schemas/HexString'
+        mixHash:
+          $ref: '#/components/schemas/Hash32'
+        nonce:
+          $ref: '#/components/schemas/HexString'
+        baseFeePerGas:
+          $ref: '#/components/schemas/HexString'
+        withdrawalsRoot:
+          $ref: '#/components/schemas/Hash32'
+        blobGasUsed:
+          $ref: '#/components/schemas/HexString'
+        excessBlobGas:
+          $ref: '#/components/schemas/HexString'
+        parentBeaconBlockRoot:
+          $ref: '#/components/schemas/Hash32'
+        hash:
+          $ref: '#/components/schemas/Hash32'
+
+    Log:
+      type: object
+      description: Single log entry emitted by op-geth's `logs` subscription.
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        topics:
+          type: array
+          maxItems: 4
+          items:
+            $ref: '#/components/schemas/Hash32'
+        data:
+          $ref: '#/components/schemas/HexString'
+        blockNumber:
+          $ref: '#/components/schemas/HexString'
+        transactionHash:
+          $ref: '#/components/schemas/Hash32'
+        transactionIndex:
+          $ref: '#/components/schemas/HexString'
+        blockHash:
+          $ref: '#/components/schemas/Hash32'
+        logIndex:
+          $ref: '#/components/schemas/HexString'
+        removed:
+          type: boolean
+
+    SyncStatus:
+      oneOf:
+        - type: boolean
+          description: '`false` once the node has finished syncing.'
+        - type: object
+          description: Active sync progress object.
+          properties:
+            syncing:
+              type: boolean
+            status:
+              type: object
+              properties:
+                startingBlock:
+                  $ref: '#/components/schemas/HexString'
+                currentBlock:
+                  $ref: '#/components/schemas/HexString'
+                highestBlock:
+                  $ref: '#/components/schemas/HexString'
+                pulledStates:
+                  $ref: '#/components/schemas/HexString'
+                knownStates:
+                  $ref: '#/components/schemas/HexString'
+
+    SubscriptionParams:
+      type: object
+      required: [subscription, result]
+      properties:
+        subscription:
+          $ref: '#/components/schemas/HexString'
+        result: {}
+
+    NewHeadNotificationPayload:
+      type: object
+      required: [jsonrpc, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        method:
+          type: string
+          const: eth_subscription
+        params:
+          allOf:
+            - $ref: '#/components/schemas/SubscriptionParams'
+            - type: object
+              properties:
+                result:
+                  $ref: '#/components/schemas/BlockHeader'
+      example:
+        jsonrpc: '2.0'
+        method: eth_subscription
+        params:
+          subscription: '0x9cef478923ff08bf67fde6c64013158d'
+          result:
+            number: '0x7c5e6b'
+            hash: '0x9b1e...'
+            parentHash: '0x8a2c...'
+            timestamp: '0x6731a9b0'
+            gasLimit: '0x1c9c380'
+            gasUsed: '0x7a120'
+            baseFeePerGas: '0x3b9aca00'
+            miner: '0x4200000000000000000000000000000000000011'
+
+    LogNotificationPayload:
+      type: object
+      required: [jsonrpc, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        method:
+          type: string
+          const: eth_subscription
+        params:
+          allOf:
+            - $ref: '#/components/schemas/SubscriptionParams'
+            - type: object
+              properties:
+                result:
+                  $ref: '#/components/schemas/Log'
+      example:
+        jsonrpc: '2.0'
+        method: eth_subscription
+        params:
+          subscription: '0x4a8a4c0517381924f9838102c5a4dcb7'
+          result:
+            address: '0x4200000000000000000000000000000000000006'
+            topics:
+              - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+              - '0x0000000000000000000000001111111111111111111111111111111111111111'
+              - '0x0000000000000000000000002222222222222222222222222222222222222222'
+            data: '0x00000000000000000000000000000000000000000000000000000000000003e8'
+            blockNumber: '0x7c5e6b'
+            transactionHash: '0xabc1...'
+            transactionIndex: '0x0'
+            blockHash: '0x9b1e...'
+            logIndex: '0x0'
+            removed: false
+
+    PendingTxNotificationPayload:
+      type: object
+      required: [jsonrpc, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        method:
+          type: string
+          const: eth_subscription
+        params:
+          allOf:
+            - $ref: '#/components/schemas/SubscriptionParams'
+            - type: object
+              properties:
+                result:
+                  oneOf:
+                    - $ref: '#/components/schemas/Hash32'
+                    - type: object
+                      description: >
+                        Full transaction object — emitted only when the
+                        subscription was opened with the optional `true` flag.
+      example:
+        jsonrpc: '2.0'
+        method: eth_subscription
+        params:
+          subscription: '0x1a2b3c4d5e6f7081923a4b5c6d7e8f90'
+          result: '0xabc12345...'
+
+    SyncingNotificationPayload:
+      type: object
+      required: [jsonrpc, method, params]
+      properties:
+        jsonrpc:
+          $ref: '#/components/schemas/JsonRpcVersion'
+        method:
+          type: string
+          const: eth_subscription
+        params:
+          allOf:
+            - $ref: '#/components/schemas/SubscriptionParams'
+            - type: object
+              properties:
+                result:
+                  $ref: '#/components/schemas/SyncStatus'
+      example:
+        jsonrpc: '2.0'
+        method: eth_subscription
+        params:
+          subscription: '0xe2ffeb2823c7d76e7b3f6a9c2d8f1e02'
+          result:
+            syncing: true
+            status:
+              startingBlock: '0x0'
+              currentBlock: '0x7c5e6b'
+              highestBlock: '0x7c5e80'
