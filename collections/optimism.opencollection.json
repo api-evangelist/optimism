@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OP Mainnet JSON-RPC",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JSON-RPC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Invoke a JSON-RPC method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://mainnet.optimism.io/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute any supported Ethereum JSON-RPC method (e.g. `eth_blockNumber`,\n`eth_chainId`, `eth_getBalance`, `eth_call`, `eth_getTransactionByHash`,\n`eth_getLogs`, `net_version`, `web3_clientVersion`).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

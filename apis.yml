@@ -11,200 +11,202 @@ description: >-
   op-deployer, op-batcher, op-proposer, op-challenger), and the Superchain Registry.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Layer 2
-  - Ethereum
-  - OP Stack
-  - Superchain
-  - JSON-RPC
-  - Rollup
-  - Bridge
+- Layer 2
+- Ethereum
+- OP Stack
+- Superchain
+- JSON-RPC
+- Rollup
+- Bridge
 created: '2026-05-23'
 modified: '2026-05-29'
 specificationVersion: '0.19'
 apis:
-  - aid: optimism:mainnet-rpc
-    name: OP Mainnet JSON-RPC
-    description: >-
-      Public Ethereum JSON-RPC endpoint for OP Mainnet (chain ID 10). Supports
-      standard eth_* methods plus Optimism extensions for L1 fee estimation, deposit
-      tracking, and withdrawal proving. Public endpoint is rate-limited and does not
-      provide WebSockets; production teams front it with Alchemy, QuickNode, Infura,
-      or self-hosted op-geth + op-node.
-    humanURL: https://docs.optimism.io/superchain/networks
-    baseURL: https://mainnet.optimism.io
-    tags:
-      - JSON-RPC
-      - Mainnet
-      - OP Mainnet
-    properties:
-      - type: Documentation
-        url: https://docs.optimism.io/superchain/networks
-      - type: AsyncAPI
-        url: https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml
-  - aid: optimism:sepolia-rpc
-    name: OP Sepolia JSON-RPC
-    description: >-
-      Public Ethereum JSON-RPC endpoint for the OP Sepolia testnet (chain ID
-      11155420) used for development and integration testing.
-    humanURL: https://docs.optimism.io/superchain/networks
-    baseURL: https://sepolia.optimism.io
-    tags:
-      - JSON-RPC
-      - Testnet
-      - Sepolia
-    properties:
-      - type: Documentation
-        url: https://docs.optimism.io/superchain/networks
-      - type: AsyncAPI
-        url: https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml
-  - aid: optimism:bridge
-    name: Optimism Bridge (Standard Bridge)
-    description: >-
-      Canonical cross-chain bridge for depositing and withdrawing ETH and ERC-20
-      tokens between Ethereum L1 and OP Mainnet, secured by the OP Stack StandardBridge
-      contracts. Available as a hosted app and via the Superbridge / Brid.gg interfaces
-      for the full Superchain.
-    humanURL: https://app.optimism.io/bridge
-    baseURL: https://app.optimism.io/bridge
-    tags:
-      - Bridge
-      - Cross-Chain
-      - Canonical
-    properties:
-      - type: Documentation
-        url: https://docs.optimism.io/app-developers/bridging/standard-bridge
-      - type: App
-        url: https://app.optimism.io/bridge
-  - aid: optimism:op-stack
-    name: OP Stack
-    description: >-
-      Open-source, modular Ethereum L2 rollup stack. The monorepo at
-      github.com/ethereum-optimism/optimism contains op-geth (execution), op-node
-      (consensus), op-batcher, op-proposer, op-challenger, op-deployer, op-validator,
-      and fault-proof system used to launch and operate Superchain rollups.
-    humanURL: https://stack.optimism.io
-    baseURL: https://github.com/ethereum-optimism/optimism
-    tags:
-      - OP Stack
-      - Rollup
-      - Open Source
-    properties:
-      - type: Documentation
-        url: https://docs.optimism.io/stack/getting-started
-      - type: Repository
-        url: https://github.com/ethereum-optimism/optimism
-      - type: Specs
-        url: https://specs.optimism.io
-  - aid: optimism:superchain-registry
-    name: Superchain Registry
-    description: >-
-      Source-of-truth index of chains that are part of the Optimism Superchain —
-      genesis files, deployment addresses, RPC endpoints, explorers, and chain
-      metadata in machine-readable form.
-    humanURL: https://github.com/ethereum-optimism/superchain-registry
-    baseURL: https://github.com/ethereum-optimism/superchain-registry
-    tags:
-      - Superchain
-      - Registry
-      - Metadata
-    properties:
-      - type: Repository
-        url: https://github.com/ethereum-optimism/superchain-registry
-  - aid: optimism:viem-sdk
-    name: Optimism SDK (Viem extension)
-    description: >-
-      Modern Optimism SDK exposed as a Viem extension (viem/op-stack) for L1<->L2
-      message tracking, deposit and withdrawal flows, fee estimation, and Superchain
-      multi-chain helpers.
-    humanURL: https://docs.optimism.io/app-developers/tutorials/bridging/cross-dom-solidity
-    baseURL: https://viem.sh/op-stack
-    tags:
-      - SDK
-      - TypeScript
-      - Viem
-      - Cross-Chain
-    properties:
-      - type: Documentation
-        url: https://viem.sh/op-stack
-  - aid: optimism:supersim
-    name: Supersim
-    description: >-
-      Local Superchain simulator that spins up multiple OP Stack chains for
-      developing and testing cross-chain interop messages (CrossL2Inbox /
-      L2ToL2CrossDomainMessenger) before mainnet rollout.
-    humanURL: https://docs.optimism.io/stack/interop/tools/supersim
-    baseURL: https://github.com/ethereum-optimism/supersim
-    tags:
-      - Supersim
-      - Interop
-      - Local Dev
-    properties:
-      - type: Repository
-        url: https://github.com/ethereum-optimism/supersim
-  - aid: optimism:etherscan-explorer
-    name: Optimism Etherscan
-    description: >-
-      Etherscan-family block explorer for OP Mainnet and OP Sepolia with REST API
-      access for contracts, transactions, and addresses.
-    humanURL: https://optimistic.etherscan.io
-    baseURL: https://api-optimistic.etherscan.io/api
-    tags:
-      - Block Explorer
-      - Etherscan
-      - API
-    properties:
-      - type: Documentation
-        url: https://docs.optimism.etherscan.io
-      - type: Website
-        url: https://optimistic.etherscan.io
-  - aid: optimism:blockscout-explorer
-    name: Optimism Blockscout
-    description: >-
-      Open-source Blockscout block explorer for OP Mainnet with REST and GraphQL
-      APIs.
-    humanURL: https://optimism.blockscout.com
-    baseURL: https://optimism.blockscout.com/api
-    tags:
-      - Block Explorer
-      - Blockscout
-      - API
-    properties:
-      - type: Website
-        url: https://optimism.blockscout.com
-common:
-  - type: Website
-    url: https://www.optimism.io
+- aid: optimism:mainnet-rpc
+  name: OP Mainnet JSON-RPC
+  description: >-
+    Public Ethereum JSON-RPC endpoint for OP Mainnet (chain ID 10). Supports
+    standard eth_* methods plus Optimism extensions for L1 fee estimation, deposit
+    tracking, and withdrawal proving. Public endpoint is rate-limited and does not
+    provide WebSockets; production teams front it with Alchemy, QuickNode, Infura,
+    or self-hosted op-geth + op-node.
+  humanURL: https://docs.optimism.io/superchain/networks
+  baseURL: https://mainnet.optimism.io
+  tags:
+  - JSON-RPC
+  - Mainnet
+  - OP Mainnet
+  properties:
   - type: Documentation
-    url: https://docs.optimism.io
-  - type: GitHub
-    url: https://github.com/ethereum-optimism
+    url: https://docs.optimism.io/superchain/networks
+  - type: AsyncAPI
+    url: https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml
+  - url: graphql/optimism-graphql.md
+    type: GraphQL
+- aid: optimism:sepolia-rpc
+  name: OP Sepolia JSON-RPC
+  description: >-
+    Public Ethereum JSON-RPC endpoint for the OP Sepolia testnet (chain ID
+    11155420) used for development and integration testing.
+  humanURL: https://docs.optimism.io/superchain/networks
+  baseURL: https://sepolia.optimism.io
+  tags:
+  - JSON-RPC
+  - Testnet
+  - Sepolia
+  properties:
+  - type: Documentation
+    url: https://docs.optimism.io/superchain/networks
+  - type: AsyncAPI
+    url: https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml
+- aid: optimism:bridge
+  name: Optimism Bridge (Standard Bridge)
+  description: >-
+    Canonical cross-chain bridge for depositing and withdrawing ETH and ERC-20
+    tokens between Ethereum L1 and OP Mainnet, secured by the OP Stack StandardBridge
+    contracts. Available as a hosted app and via the Superbridge / Brid.gg interfaces
+    for the full Superchain.
+  humanURL: https://app.optimism.io/bridge
+  baseURL: https://app.optimism.io/bridge
+  tags:
+  - Bridge
+  - Cross-Chain
+  - Canonical
+  properties:
+  - type: Documentation
+    url: https://docs.optimism.io/app-developers/bridging/standard-bridge
+  - type: App
+    url: https://app.optimism.io/bridge
+- aid: optimism:op-stack
+  name: OP Stack
+  description: >-
+    Open-source, modular Ethereum L2 rollup stack. The monorepo at
+    github.com/ethereum-optimism/optimism contains op-geth (execution), op-node
+    (consensus), op-batcher, op-proposer, op-challenger, op-deployer, op-validator,
+    and fault-proof system used to launch and operate Superchain rollups.
+  humanURL: https://stack.optimism.io
+  baseURL: https://github.com/ethereum-optimism/optimism
+  tags:
+  - OP Stack
+  - Rollup
+  - Open Source
+  properties:
+  - type: Documentation
+    url: https://docs.optimism.io/stack/getting-started
+  - type: Repository
+    url: https://github.com/ethereum-optimism/optimism
   - type: Specs
     url: https://specs.optimism.io
-  - type: SuperchainRegistry
+- aid: optimism:superchain-registry
+  name: Superchain Registry
+  description: >-
+    Source-of-truth index of chains that are part of the Optimism Superchain —
+    genesis files, deployment addresses, RPC endpoints, explorers, and chain
+    metadata in machine-readable form.
+  humanURL: https://github.com/ethereum-optimism/superchain-registry
+  baseURL: https://github.com/ethereum-optimism/superchain-registry
+  tags:
+  - Superchain
+  - Registry
+  - Metadata
+  properties:
+  - type: Repository
     url: https://github.com/ethereum-optimism/superchain-registry
-  - type: Governance
-    url: https://gov.optimism.io
-  - type: Status
-    url: https://status.optimism.io
-  - type: Twitter
-    url: https://x.com/Optimism
-  - type: Discord
-    url: https://discord.gg/optimism
-  - type: Blog
-    url: https://blog.oplabs.co
-  - type: LLMsTxt
-    url: https://docs.optimism.io/llms.txt
+- aid: optimism:viem-sdk
+  name: Optimism SDK (Viem extension)
+  description: >-
+    Modern Optimism SDK exposed as a Viem extension (viem/op-stack) for L1<->L2
+    message tracking, deposit and withdrawal flows, fee estimation, and Superchain
+    multi-chain helpers.
+  humanURL: https://docs.optimism.io/app-developers/tutorials/bridging/cross-dom-solidity
+  baseURL: https://viem.sh/op-stack
+  tags:
+  - SDK
+  - TypeScript
+  - Viem
+  - Cross-Chain
+  properties:
+  - type: Documentation
+    url: https://viem.sh/op-stack
+- aid: optimism:supersim
+  name: Supersim
+  description: >-
+    Local Superchain simulator that spins up multiple OP Stack chains for
+    developing and testing cross-chain interop messages (CrossL2Inbox /
+    L2ToL2CrossDomainMessenger) before mainnet rollout.
+  humanURL: https://docs.optimism.io/stack/interop/tools/supersim
+  baseURL: https://github.com/ethereum-optimism/supersim
+  tags:
+  - Supersim
+  - Interop
+  - Local Dev
+  properties:
+  - type: Repository
+    url: https://github.com/ethereum-optimism/supersim
+- aid: optimism:etherscan-explorer
+  name: Optimism Etherscan
+  description: >-
+    Etherscan-family block explorer for OP Mainnet and OP Sepolia with REST API
+    access for contracts, transactions, and addresses.
+  humanURL: https://optimistic.etherscan.io
+  baseURL: https://api-optimistic.etherscan.io/api
+  tags:
+  - Block Explorer
+  - Etherscan
+  - API
+  properties:
+  - type: Documentation
+    url: https://docs.optimism.etherscan.io
+  - type: Website
+    url: https://optimistic.etherscan.io
+- aid: optimism:blockscout-explorer
+  name: Optimism Blockscout
+  description: >-
+    Open-source Blockscout block explorer for OP Mainnet with REST and GraphQL
+    APIs.
+  humanURL: https://optimism.blockscout.com
+  baseURL: https://optimism.blockscout.com/api
+  tags:
+  - Block Explorer
+  - Blockscout
+  - API
+  properties:
+  - type: Website
+    url: https://optimism.blockscout.com
+common:
+- type: Website
+  url: https://www.optimism.io
+- type: Documentation
+  url: https://docs.optimism.io
+- type: GitHub
+  url: https://github.com/ethereum-optimism
+- type: Specs
+  url: https://specs.optimism.io
+- type: SuperchainRegistry
+  url: https://github.com/ethereum-optimism/superchain-registry
+- type: Governance
+  url: https://gov.optimism.io
+- type: Status
+  url: https://status.optimism.io
+- type: Twitter
+  url: https://x.com/Optimism
+- type: Discord
+  url: https://discord.gg/optimism
+- type: Blog
+  url: https://blog.oplabs.co
+- type: LLMsTxt
+  url: https://docs.optimism.io/llms.txt
 integrations:
-  - name: Ethereum
-  - name: Base
-  - name: Mode
-  - name: Zora
-  - name: Worldchain
-  - name: Alchemy
-  - name: QuickNode
-  - name: Infura
-  - name: The Graph
-  - name: Etherscan
+- name: Ethereum
+- name: Base
+- name: Mode
+- name: Zora
+- name: Worldchain
+- name: Alchemy
+- name: QuickNode
+- name: Infura
+- name: The Graph
+- name: Etherscan
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
