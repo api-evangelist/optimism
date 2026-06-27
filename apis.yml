@@ -194,7 +194,7 @@ common:
   url: https://discord.gg/optimism
 - type: Blog
   url: https://blog.oplabs.co
-- type: LLMsTxt
+- type: LlmsText
   url: https://docs.optimism.io/llms.txt
 integrations:
 - name: Ethereum
