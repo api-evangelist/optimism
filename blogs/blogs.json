@@ -2,13 +2,14 @@
   "repo": "optimism",
   "feeds": [
     {
-      "source": "https://blog.oplabs.co",
-      "feed_url": "",
-      "saved": 3,
-      "method": "agent-scrape"
+      "source": "https://discord.gg/optimism",
+      "feed_url": "https://discord.gg/optimism",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T13:00:17Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 9,
-  "agent_pulled": "2026-06-27"
+  "agent_pulled": "2026-07-04"
 }
