@@ -190,6 +190,9 @@ apis:
   - type: OpenAPI
     url: openapi/optimism-json-rpc-api-openapi.yml
 common:
+- type: License
+  name: MIT
+  url: https://github.com/ethereum-optimism/optimism/blob/develop/LICENSE
 - type: AgenticAccess
   url: agentic-access/optimism-agentic-access.yml
 - type: DomainSecurity
