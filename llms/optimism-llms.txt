@@ -1,0 +1,422 @@
+# Optimism Documentation
+
+## Docs
+
+- [OP Stack documentation](https://docs.optimism.io/index.md): Build apps on the OP Stack, deploy your own OP Stack chain, run a node, or learn how the protocol works.
+- [Use the Docs with AI](https://docs.optimism.io/ai-docs.md): Read the Optimism docs as an agent with llms.txt and per-page markdown, connect the hosted MCP server, and start from curated prompts.
+- [Chain operator quickstart](https://docs.optimism.io/chain-operators/quickstart.md): Launch a scalable and customizable Layer 2 Rollup blockchain with Ethereum-grade security - powered by Optimism.
+- [Choose how to run your chain](https://docs.optimism.io/chain-operators/launch-paths.md): The spectrum between running an OP Stack chain yourself and having it operated for you, and what your team owns at each point on it.
+- [Glossary](https://docs.optimism.io/op-stack/reference/glossary.md): Learn the meaning of important terminology used throughout the Optimism Developer Documentation.
+- [Solution guides](https://docs.optimism.io/use-cases/index.md): Solution guides that sequence the OP Stack documentation into one paved path per real operator or developer goal.
+- [Tune batcher costs](https://docs.optimism.io/use-cases/tune-batcher-costs.md): Reduce what your OP Stack chain spends posting data to L1, and recover what you do spend, without breaking batch-submission safety limits.
+- [Run a fault-proof challenger](https://docs.optimism.io/use-cases/run-a-fault-proof-challenger.md): Stand up an op-challenger that defends your OP Stack chain, from bond budgeting and prestate selection through infrastructure, configuration, and monitoring.
+- [Implement a custom deposit flow](https://docs.optimism.io/use-cases/implement-a-custom-deposit-flow.md): Build an L1 to L2 deposit path for your application, choosing the right contract entry point and handling gas, aliasing, and failed messages.
+- [Launch a chain with fault proofs and HA sequencing](https://docs.optimism.io/use-cases/launch-a-chain-with-fault-proofs-and-ha-sequencing.md): Take an OP Stack chain to production with a working fault-proof system and a high-availability sequencer cluster, from contract deployment through failover drills.
+- [Choose your node stack](https://docs.optimism.io/use-cases/choose-your-node-stack.md): Pick the consensus and execution clients for an OP Stack node based on what the node is for, with review-dated support facts.
+- [Contribute to the docs](https://docs.optimism.io/op-stack/contribute/index.md): The contributor policies and content-type contracts for docs.optimism.io, routed by the task you came to do.
+- [Content guide](https://docs.optimism.io/op-stack/contribute/content-guide.md): What content belongs on docs.optimism.io, the canonical home for each content type, and how to mark third-party content.
+- [Cross-repo link policy](https://docs.optimism.io/op-stack/contribute/link-policy.md): The canonical form for every link from docs.optimism.io into the specs, source repositories, and other pages — and the linter that enforces it.
+- [Curation review policy](https://docs.optimism.io/op-stack/contribute/curation-policy.md): The review cadence for curated pages, the last-reviewed frontmatter contract, the sweep that keeps curated content fresh, and the rule for delisting what rots.
+- [Learn track syllabus](https://docs.optimism.io/op-stack/contribute/learn-track-syllabus.md): The governance artifact for the "Learn the OP Stack" track, including its scope contract, curriculum owner, stop list with rationale, design rules, and changelog.
+- [Style guide](https://docs.optimism.io/op-stack/contribute/style-guide.md): How to write technical content for Optimism Docs with a consistent voice, tone, and style.
+- [Choose a content type](https://docs.optimism.io/op-stack/contribute/choose-a-content-type.md): A maintainer-facing decision table for picking the right documentation type, composition, and operational metadata.
+- [Content type: solution guide](https://docs.optimism.io/op-stack/contribute/solution-guide.md): The published contract for solution guides — purpose, tone, required components, title grammar, and a copy-paste template.
+- [Content type: learning unit](https://docs.optimism.io/op-stack/contribute/learning-unit.md): The published contract for learning units — purpose, tone, required components, title grammar, and copy-paste templates for both forms.
+- [Content type: curriculum hub](https://docs.optimism.io/op-stack/contribute/curriculum-hub.md): The published contract for curriculum hubs — purpose, tone, required components, title grammar, and a copy-paste template.
+- [Content type: router/landing](https://docs.optimism.io/op-stack/contribute/router-landing.md): The published contract for router and landing pages — purpose, tone, required components, title grammar, and a copy-paste template.
+- [Content type: notice](https://docs.optimism.io/op-stack/contribute/notice.md): The published contract for time-bound network notices, including required persona impacts, actions, timing, and a copy-paste template.
+- [Component hub template](https://docs.optimism.io/op-stack/contribute/component-hub-template.md): The uniform skeleton every OP Stack component hub page follows, with guidance for each section.
+- [Chain operators](https://docs.optimism.io/chain-operators/index.md): Routes chain operators to the quickstart, guides, tutorials, tools, and reference for launching and running an OP Stack chain.
+- [Chain Operator Configurations](https://docs.optimism.io/chain-operators/guides/configuration/getting-started.md): Learn how to configure an OP Stack chain.
+- [Configure the batcher](https://docs.optimism.io/chain-operators/guides/configuration/batcher.md): Learn how to configure the op-batcher for your chain, covering the batcher policy, cost tuning, multi-blob transactions, and sequencer throttling.
+- [Proposer Configuration](https://docs.optimism.io/chain-operators/guides/configuration/proposer.md): Reference for the op-proposer configuration options and the proposer policy constraints.
+- [How to configure challenger for your chain](https://docs.optimism.io/chain-operators/guides/configuration/op-challenger-config-guide.md): Learn how to configure challenger for your OP Stack chain.
+- [Deploy a Custom Gas Token chain](https://docs.optimism.io/chain-operators/guides/features/custom-gas-token-guide.md): Learn how to deploy a Custom Gas Token chain using OP Deployer.
+- [Switch to Kona Proofs](https://docs.optimism.io/chain-operators/guides/features/switching-to-kona-proofs.md): Learn how to switch your OP Stack chain to use Kona-based fault proofs as the respected game type.
+- [Set the Minimum Base Fee](https://docs.optimism.io/chain-operators/guides/features/setting-min-base-fee.md): Learn how to set a minimum base fee on your OP-Stack Chain
+- [Set the Operator Fee](https://docs.optimism.io/chain-operators/guides/features/setting-operator-fee.md): Learn how to configure the operator fee on your OP Stack Chain
+- [Set the DA Footprint Gas Scalar](https://docs.optimism.io/chain-operators/guides/features/setting-da-footprint.md): Learn how to set a Data Availability (DA) Footprint on your OP-Stack Chain
+- [Enabling Subblocks](https://docs.optimism.io/chain-operators/guides/features/subblocks-guide.md): Learn about enabling Subblocks on an OP Stack chain.
+- [How to run an Alt-DA mode chain](https://docs.optimism.io/chain-operators/guides/features/alt-da-mode-guide.md): Learn how to configure and run an Alt-DA mode chain within the OP Stack.
+- [Post batch data as blobs](https://docs.optimism.io/chain-operators/guides/features/blobs.md): Learn how to switch your chain's batcher to posting batch data as blobs.
+- [Enable span batches](https://docs.optimism.io/chain-operators/guides/features/enable-span-batches.md): Learn how to enable span batches on your OP Stack chain by confirming Delta activation and configuring the batch type on op-batcher.
+- [Using snap sync for chain operators](https://docs.optimism.io/chain-operators/guides/features/snap-sync.md): Learn how to enable snap sync on your OP Stack chain.
+- [Chain operator best practices](https://docs.optimism.io/chain-operators/guides/management/best-practices.md): Learn some best practices for managing the OP Stack's off-chain components.
+- [Network Design Example](https://docs.optimism.io/chain-operators/guides/management/network-architecture.md): This document describes an example network configuration for an OP Stack chain deployment.
+- [Changing gas target/limit](https://docs.optimism.io/chain-operators/guides/management/gas-target-limit.md): Learn how to change the gas target and limit on your OP Stack chain.
+- [Key management](https://docs.optimism.io/chain-operators/guides/management/key-management.md): Understand the key management considerations for a chain's privileged roles: which keys must stay online as hot wallets, which belong in cold wallets, and where HSMs and multisigs fit.
+- [Rollup operations](https://docs.optimism.io/chain-operators/guides/management/operations.md): Learn basics of rollup operations, such as how to start and stop your rollup, get your rollup config, and how to add nodes.
+- [Transaction Fees 101](https://docs.optimism.io/chain-operators/guides/management/transaction-fees-101.md): How to check and tune the fee parameters on your OP Stack chain, with example scenarios for common situations.
+- [Fee vault operations](https://docs.optimism.io/chain-operators/guides/management/fee-vaults.md): How to configure, monitor, and withdraw from fee vaults on your OP Stack chain.
+- [Troubleshooting chain operations](https://docs.optimism.io/chain-operators/guides/management/troubleshooting.md): Learn solutions to common problems when troubleshooting chain operations.
+- [Join the Superchain Registry](https://docs.optimism.io/chain-operators/guides/join-superchain-registry.md): How to add your OP Stack chain to the Superchain Registry — prerequisites, config generation, and the pull-request process.
+- [Creating your own L2 rollup testnet](https://docs.optimism.io/chain-operators/tutorials/create-l2-rollup/index.md): Learn how to deploy and orchestrate all OP Stack components for a complete testnet deployment.
+- [Deploy L1 contracts with op-deployer](https://docs.optimism.io/chain-operators/tutorials/create-l2-rollup/op-deployer-setup.md): Install op-deployer, prepare your environment, and deploy the L1 smart contracts for your rollup.
+- [Spin up sequencer](https://docs.optimism.io/chain-operators/tutorials/create-l2-rollup/op-reth-setup.md): Set up and run op-reth and op-node, the execution and consensus layers for your rollup.
+- [Spin up batcher](https://docs.optimism.io/chain-operators/tutorials/create-l2-rollup/op-batcher-setup.md): Learn how to set up and configure an OP Stack batcher to submit L2 transaction batches to L1.
+- [Spin up proposer](https://docs.optimism.io/chain-operators/tutorials/create-l2-rollup/op-proposer-setup.md): Learn how to set up and configure an OP Stack proposer to post L2 state roots.
+- [Spin up challenger](https://docs.optimism.io/chain-operators/tutorials/create-l2-rollup/op-challenger-setup.md): Learn how to configure challenger for your OP Stack chain.
+- [L2 Rollup Code Examples](https://docs.optimism.io/chain-operators/tutorials/create-l2-rollup/code-setup.md): Complete working code examples for the Create L2 Rollup tutorial
+- [Upgrade L1 contracts using op-deployer](https://docs.optimism.io/chain-operators/tutorials/l1-contract-upgrades/op-deployer-upgrade.md): Version availability and migration paths for the op-deployer upgrade command, which supports L1 contract upgrades up to op-contracts/v5.0.0.
+- [Upgrade using superchain-ops](https://docs.optimism.io/chain-operators/tutorials/l1-contract-upgrades/superchain-ops-guide.md): Upgrade your chain's L1 contracts with superchain-ops by creating a task from a template, configuring and simulating it, then executing it or submitting it for review.
+- [Upgrading Smart Contracts from v1.3.0 to v1.8.0](https://docs.optimism.io/chain-operators/tutorials/l1-contract-upgrades/upgrade-op-contracts-1-3-1-8.md): Upgrade your OP Stack chain's L1 contracts from op-contracts/v1.3.0 to v1.8.0, moving from the L2 Output Oracle to the permissioned Fault Proof System.
+- [Adding a precompile](https://docs.optimism.io/chain-operators/tutorials/adding-precompiles.md): Learn how to run an EVM with a new precompile for OP Stack chain operations to speed up calculations that are not currently supported.
+- [Modifying predeployed contracts](https://docs.optimism.io/chain-operators/tutorials/modifying-predeploys.md): Learn how to modify predeployed contracts for an OP Stack chain by upgrading the proxy.
+- [Adding attributes to the derivation function](https://docs.optimism.io/chain-operators/tutorials/adding-derivation-attributes.md): Learn how to modify the derivation function for an OP Stack chain to track the amount of ETH being burned on L1.
+- [Integrating a new DA layer with Alt-DA](https://docs.optimism.io/chain-operators/tutorials/integrating-da-layer.md): Learn how to add support for a new DA Layer within the OP Stack.
+- [Generating absolute prestate and preimage files](https://docs.optimism.io/chain-operators/tutorials/absolute-prestate.md): Generate, verify, and configure the kona-client absolute prestate for permissionless fault proofs.
+- [Generating a custom kona-client absolute prestate](https://docs.optimism.io/chain-operators/tutorials/kona-custom-prestate.md): How to build a kona-client absolute prestate that embeds a chain configuration not yet in the public Superchain Registry.
+- [Deploying new dispute games with OPCM](https://docs.optimism.io/chain-operators/tutorials/dispute-games.md): Learn how to deploy new dispute games to an OP Stack chain using OPCM
+- [Migrating to permissionless fault proofs on OP Stack](https://docs.optimism.io/chain-operators/tutorials/migrating-permissionless.md): Migrate your OP Stack chain from permissioned to permissionless fault proofs: configure the dispute components, deploy the contracts with OPCM, test the off-chain agents, and switch the respected game type.
+- [Merging Two Chains Into a Shared Dispute Game](https://docs.optimism.io/chain-operators/tutorials/merge-shared-dispute-game.md): Merge two pre-interop OP Stack chains into a shared DisputeGameFactory and AnchorStateRegistry with opcm.migrate, then cut over op-proposer, op-challenger, and op-dispute-mon to the shared factory.
+- [How to rewind op-geth](https://docs.optimism.io/chain-operators/tutorials/rewind-op-geth.md): Learn how to rewind an op-geth node to a previous chain head.
+- [Upgrading a Chain From Output Roots to Super Roots](https://docs.optimism.io/chain-operators/tutorials/upgrade-chain-to-super-roots.md): Upgrade an OP Stack chain from output-root dispute games to super-root dispute games with a single opcm.upgrade call, then cut op-proposer, op-challenger, and op-dispute-mon over to super roots.
+- [Chain monitoring options](https://docs.optimism.io/chain-operators/tools/chain-monitoring.md): Learn about onchain and offchain monitoring options for your OP Stack chain.
+- [Blockscout block explorer](https://docs.optimism.io/chain-operators/tools/explorer.md): Blockscout an open source block explorer for the OP Stack.
+- [OP Conductor](https://docs.optimism.io/chain-operators/tools/op-conductor.md): Understand how op-conductor keeps an OP Stack sequencer highly available, the guarantees it provides, and how its Raft-based design works.
+- [Setup](https://docs.optimism.io/chain-operators/tools/op-conductor/setup.md): Add op-conductor to an existing multi-sequencer OP Stack network without downtime.
+- [Configuration and RPCs](https://docs.optimism.io/chain-operators/tools/op-conductor/reference.md): Reference for op-conductor configuration flags, environment variables, and conductor namespace RPC methods.
+- [OP Deployer](https://docs.optimism.io/chain-operators/tools/op-deployer/overview.md): A CLI tool for deploying and upgrading smart contracts for OP Stack chains.
+- [Install op-deployer](https://docs.optimism.io/chain-operators/tools/op-deployer/installation.md): Learn how to install op-deployer from pre-built binaries or from source.
+- [Bootstrap Commands](https://docs.optimism.io/chain-operators/tools/op-deployer/usage/bootstrap.md): Learn how to deploy global singletons and implementation contracts for new OP Stack deployments.
+- [Init Command](https://docs.optimism.io/chain-operators/tools/op-deployer/usage/init.md): Learn how to initialize intent and state files for your OP Stack deployment.
+- [Apply Command](https://docs.optimism.io/chain-operators/tools/op-deployer/usage/apply.md): Learn how to deploy your OP Chain based on the intent file.
+- [Verify Command](https://docs.optimism.io/chain-operators/tools/op-deployer/usage/verify.md): Learn how to verify deployed contract source code on block explorers.
+- [Custom Deployments](https://docs.optimism.io/chain-operators/tools/op-deployer/usage/custom-deployments.md): Learn how to manage custom deployments with OP Deployer.
+- [Release Workflows](https://docs.optimism.io/chain-operators/tools/op-deployer/usage/release-workflows.md): Learn how to backport fixes onto earlier OP Deployer versions and add support for new contract versions.
+- [Known Limitations](https://docs.optimism.io/chain-operators/tools/op-deployer/known-limitations.md): Known limitations and workarounds for OP Deployer.
+- [Architecture](https://docs.optimism.io/chain-operators/tools/op-deployer/reference/architecture/overview.md): Understand OP Deployer's architecture and internals.
+- [Deployment Pipeline](https://docs.optimism.io/chain-operators/tools/op-deployer/reference/architecture/pipeline.md): Understand how OP Deployer's pipeline is architected: the intent and state files it consumes and produces, and what each deployment stage is responsible for.
+- [Scripting Engine](https://docs.optimism.io/chain-operators/tools/op-deployer/reference/architecture/engine.md): Understand OP Deployer's in-memory EVM scripting engine: what it enables, why on-chain interactions run through Solidity scripts, and how Go code communicates with scripts inside the simulated EVM.
+- [Artifacts Locators](https://docs.optimism.io/chain-operators/tools/op-deployer/reference/artifacts-locators.md): Learn how OP Deployer uses artifacts locators to point to contract artifacts.
+- [op-deployer versioning and releases](https://docs.optimism.io/chain-operators/tools/op-deployer/reference/releases.md): Reference for where to find OP Deployer releases and how each OP Deployer version maps to a supported contract release.
+- [OP Interop Filter](https://docs.optimism.io/chain-operators/tools/op-interop-filter.md): Learn how op-interop-filter validates interop executing messages so the execution layer can reject invalid cross-chain transactions before they reach the sequencer.
+- [OP Txproxy](https://docs.optimism.io/chain-operators/tools/op-txproxy.md): A passthrough proxy service that can apply additional constraints on transactions prior to reaching the sequencer.
+- [Run proxyd](https://docs.optimism.io/chain-operators/tools/proxyd.md): Learn how to build, configure, and run proxyd, the OP Stack RPC request router and proxy.
+- [Batcher configuration reference](https://docs.optimism.io/chain-operators/reference/batcher-configuration.md): Reference for all op-batcher configuration options, covering CLI flags, environment variables, and default values.
+- [Challenger configuration reference](https://docs.optimism.io/chain-operators/reference/challenger-configuration.md): Reference for all op-challenger configuration options, covering CLI flags, environment variables, and default values.
+- [OP Contracts Manager](https://docs.optimism.io/chain-operators/reference/opcm.md): Understand what OP Contracts Manager is, why it exists, and how it deploys and upgrades the L1 contracts for OP Stack chains in a single transaction.
+- [Rollup deployment configuration](https://docs.optimism.io/chain-operators/reference/rollup-deployment-configuration.md): Reference for the OP Stack rollup deployment configuration values.
+- [Fee parameters](https://docs.optimism.io/chain-operators/reference/fee-parameters.md): Reference for the fee-related SystemConfig parameters on an OP Stack chain — what each parameter controls, its setter and getter, and the OP Mainnet values.
+- [How the DA footprint block limit works](https://docs.optimism.io/chain-operators/reference/da-footprint.md): Understand the Data Availability (DA) footprint block limit introduced in the Jovian hardfork, how the DA footprint is calculated, and why the default gas scalar is 400.
+- [Generating an op-program absolute prestate (archived)](https://docs.optimism.io/chain-operators/tutorials/archive/op-program-prestate.md): Archived: legacy op-program prestate generation flow for chains resolving in-flight CANNON game type 1 disputes.
+- [Node Operator Overview](https://docs.optimism.io/node-operators/overview.md): Learn about running nodes on OP Stack networks.
+- [Consensus client configuration](https://docs.optimism.io/node-operators/guides/configuration/consensus-clients.md): Learn how to configure consensus clients (op-node, kona-node) for your OP Stack node.
+- [Execution client configuration](https://docs.optimism.io/node-operators/guides/configuration/execution-clients.md): Configure op-reth as your OP Stack execution client and migrate off end-of-support op-geth.
+- [Supernode setup](https://docs.optimism.io/node-operators/guides/configuration/supernode-setup.md): Stand up op-supernode end to end - build the binary, wire each chain's engine API, start the process, and verify every chain is syncing.
+- [Supernode configuration](https://docs.optimism.io/node-operators/guides/configuration/supernode.md): Learn how to configure op-supernode to run every chain in an interop dependency set in one process.
+- [Running an archive node](https://docs.optimism.io/node-operators/guides/management/archive-node.md): Learn how to configure and run an archive node.
+- [Fetch blob data for your node](https://docs.optimism.io/node-operators/guides/management/blobs.md): Configure op-node to fetch L1 batcher blob data, including blobs older than the beacon retention window.
+- [Restore a Node From a Snapshot](https://docs.optimism.io/node-operators/guides/management/restore-from-snapshot.md): Download, verify, and extract a snapshot into your node's data directory to skip the initial sync.
+- [Node Metrics and Monitoring](https://docs.optimism.io/node-operators/guides/monitoring/metrics.md): Learn about the different metrics you can use to monitor the health of your node.
+- [Node Troubleshooting](https://docs.optimism.io/node-operators/guides/troubleshooting.md): Learn solutions to common problems to troubleshoot your node.
+- [Running a Node With Docker](https://docs.optimism.io/node-operators/tutorials/node-from-docker.md): Run an OP Stack node (op-reth + op-node) using the official Docker images and docker-compose.
+- [Building and running an OP Stack node from source](https://docs.optimism.io/node-operators/tutorials/run-node-from-source.md): Build and run an OP Stack node (op-reth + op-node) from source code for full nodes and archive nodes.
+- [Running op-reth with Historical Proofs](https://docs.optimism.io/node-operators/tutorials/reth-historical-proofs.md): Configure op-reth's proofs-history (v2) store to serve efficient historical eth_getProof responses for permissionless withdrawal proving.
+- [System Requirements](https://docs.optimism.io/node-operators/kona-node/requirements.md)
+- [Install kona-node](https://docs.optimism.io/node-operators/kona-node/install/overview.md): Prerequisites and the three ways to obtain kona-node: Docker images, pre-built binaries, or building from source.
+- [Building from Source](https://docs.optimism.io/node-operators/kona-node/install/source.md)
+- [Run a Node](https://docs.optimism.io/node-operators/kona-node/run/overview.md)
+- [Run Kona Node as a Binary](https://docs.optimism.io/node-operators/kona-node/run/binary.md): Run the kona-node binary against an op-reth execution client, from starting both clients to watching the node sync.
+- [Docker Guide](https://docs.optimism.io/node-operators/kona-node/run/docker.md): Run kona-node with op-reth using Kona's pre-packaged docker-compose setup, including Grafana dashboards and Prometheus.
+- [How it Works](https://docs.optimism.io/node-operators/kona-node/run/mechanics.md)
+- [Configure RPC Trust](https://docs.optimism.io/node-operators/kona-node/run/rpc-trust.md): Decide when to enable RPC response verification on kona-node and configure the --l1-trust-rpc and --l2-trust-rpc flags for trusted and untrusted providers.
+- [Run a Sequencer Node](https://docs.optimism.io/node-operators/kona-node/run/sequencer.md): Run kona-node in sequencer mode from the command line, including required arguments, sequencer-specific flags, and example configurations.
+- [JSON-RPC](https://docs.optimism.io/node-operators/kona-node/rpc/overview.md)
+- [P2P RPC Methods](https://docs.optimism.io/node-operators/kona-node/rpc/p2p.md)
+- [Rollup RPC Methods](https://docs.optimism.io/node-operators/kona-node/rpc/rollup.md)
+- [Admin RPC Methods](https://docs.optimism.io/node-operators/kona-node/rpc/admin.md)
+- [Kona Node CLI Reference](https://docs.optimism.io/node-operators/kona-node/configuration.md): Reference for all kona-node CLI flags and environment variables, grouped by category, plus default ports and default runtime behavior.
+- [Monitoring](https://docs.optimism.io/node-operators/kona-node/monitoring.md): Set up logging, Prometheus metrics, and Grafana dashboards for kona-node.
+- [`kona-node` Subcommands](https://docs.optimism.io/node-operators/kona-node/subcommands.md)
+- [FAQ](https://docs.optimism.io/node-operators/kona-node/faq/overview.md)
+- [Node Ports](https://docs.optimism.io/node-operators/kona-node/faq/ports.md)
+- [Node Design Overview](https://docs.optimism.io/node-operators/kona-node/design/intro.md)
+- [Derivation in Kona Node](https://docs.optimism.io/node-operators/kona-node/design/derivation.md)
+- [Execution Engine](https://docs.optimism.io/node-operators/kona-node/design/engine.md)
+- [P2P Networking](https://docs.optimism.io/node-operators/kona-node/design/p2p.md)
+- [Sequencer Mode](https://docs.optimism.io/node-operators/kona-node/design/sequencer.md): Understand how the kona-node sequencer actor builds L2 blocks, and the trait abstractions and programmatic configuration behind sequencer mode.
+- [op-reth for node operators](https://docs.optimism.io/node-operators/op-reth/index.md): op-reth is the OP Stack execution client built on reth. Start here to run it alongside a rollup node and to find its CLI reference.
+- [Sync OP Mainnet](https://docs.optimism.io/node-operators/op-reth/run/faq/sync-op-mainnet.md): Syncing op-reth with OP Mainnet and Bedrock state.
+- [Node architecture](https://docs.optimism.io/node-operators/reference/architecture/index.md): Understand how the components of an OP Stack node fit together.
+- [op-node configuration options](https://docs.optimism.io/node-operators/reference/op-node-config.md): Complete reference for all op-node command-line flags and environment variables.
+- [op-node JSON-RPC API](https://docs.optimism.io/node-operators/reference/op-node-json-rpc.md): Complete reference for op-node RPC methods including rollup-specific functionality.
+- [op-supernode configuration options](https://docs.optimism.io/node-operators/reference/op-supernode-config.md): Complete reference for all op-supernode command-line flags and environment variables.
+- [op-reth configuration options](https://docs.optimism.io/node-operators/reference/op-reth-config.md): Where to find the op-reth CLI reference, and how op-reth pairs with op-node.
+- [op-reth JSON-RPC API](https://docs.optimism.io/node-operators/reference/op-reth-json-rpc.md): Complete reference for op-reth execution client RPC methods with OP Stack enhancements.
+- [op-reth historical proof configuration](https://docs.optimism.io/node-operators/reference/op-reth-historical-proof-config.md): Configuration options for the op-reth historical proof store (v2).
+- [Consensus-layer sync](https://docs.optimism.io/node-operators/reference/consensus-layer-sync.md): Learn about the consensus-layer sync mode.
+- [Understanding the op-reth CLI](https://docs.optimism.io/node-operators/op-reth/cli/overview.md): Understand how the op-reth command-line interface is organized, how chain selection works through the Superchain Registry, and where configuration values come from.
+- [op-reth](https://docs.optimism.io/node-operators/op-reth/cli/op-reth.md)
+- [op-reth node](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/node.md)
+- [op-reth init](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/init.md)
+- [op-reth init-state](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/init-state.md)
+- [op-reth import-op](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/import-op.md)
+- [op-reth import-receipts-op](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/import-receipts-op.md)
+- [op-reth dump-genesis](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/dump-genesis.md)
+- [op-reth db](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db.md)
+- [op-reth db stats](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/stats.md)
+- [op-reth db list](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/list.md)
+- [op-reth db checksum](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/checksum.md)
+- [op-reth db checksum mdbx](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/checksum/mdbx.md)
+- [op-reth db checksum static-file](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/checksum/static-file.md)
+- [op-reth db checksum rocksdb](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/checksum/rocksdb.md)
+- [op-reth db copy](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/copy.md)
+- [op-reth db diff](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/diff.md)
+- [op-reth db get](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/get.md)
+- [op-reth db get mdbx](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/get/mdbx.md)
+- [op-reth db get static-file](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/get/static-file.md)
+- [op-reth db get rocksdb](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/get/rocksdb.md)
+- [op-reth db drop](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/drop.md)
+- [op-reth db clear](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/clear.md)
+- [op-reth db clear mdbx](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/clear/mdbx.md)
+- [op-reth db clear static-file](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/clear/static-file.md)
+- [op-reth db repair-trie](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/repair-trie.md)
+- [op-reth db static-file-header](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/static-file-header.md)
+- [op-reth db static-file-header block](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/static-file-header/block.md)
+- [op-reth db static-file-header path](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/static-file-header/path.md)
+- [op-reth db version](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/version.md)
+- [op-reth db path](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/path.md)
+- [op-reth db settings](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/settings.md)
+- [op-reth db settings get](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/settings/get.md)
+- [op-reth db settings set](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/settings/set.md)
+- [op-reth db settings set v2](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/settings/set/v2.md)
+- [op-reth db prune-checkpoints](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/prune-checkpoints.md)
+- [op-reth db prune-checkpoints get](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/prune-checkpoints/get.md)
+- [op-reth db prune-checkpoints set](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/prune-checkpoints/set.md)
+- [op-reth db stage-checkpoints](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/stage-checkpoints.md)
+- [op-reth db stage-checkpoints get](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/stage-checkpoints/get.md)
+- [op-reth db stage-checkpoints set](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/stage-checkpoints/set.md)
+- [op-reth db account-storage](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/account-storage.md)
+- [op-reth db state](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/state.md)
+- [op-reth db migrate-v2](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/db/migrate-v2.md)
+- [op-reth stage](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage.md)
+- [op-reth stage run](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/run.md)
+- [op-reth stage drop](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/drop.md)
+- [op-reth stage dump](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/dump.md)
+- [op-reth stage dump execution](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/dump/execution.md)
+- [op-reth stage dump storage-hashing](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/dump/storage-hashing.md)
+- [op-reth stage dump account-hashing](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/dump/account-hashing.md)
+- [op-reth stage dump merkle](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/dump/merkle.md)
+- [op-reth stage unwind](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/unwind.md)
+- [op-reth stage unwind to-block](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/unwind/to-block.md)
+- [op-reth stage unwind num-blocks](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/stage/unwind/num-blocks.md)
+- [op-reth p2p](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/p2p.md)
+- [op-reth p2p header](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/p2p/header.md)
+- [op-reth p2p body](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/p2p/body.md)
+- [op-reth p2p rlpx](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/p2p/rlpx.md)
+- [op-reth p2p rlpx ping](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/p2p/rlpx/ping.md)
+- [op-reth p2p bootnode](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/p2p/bootnode.md)
+- [op-reth p2p enode](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/p2p/enode.md)
+- [op-reth config](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/config.md)
+- [op-reth prune](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/prune.md)
+- [op-reth re-execute](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/re-execute.md)
+- [op-reth proofs](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/proofs.md)
+- [op-reth proofs init](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/proofs/init.md)
+- [op-reth proofs backfill](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/proofs/backfill.md)
+- [op-reth proofs prune](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/proofs/prune.md)
+- [op-reth proofs snapshot](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/proofs/snapshot.md)
+- [op-reth proofs snapshot init](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/proofs/snapshot/init.md)
+- [op-reth proofs snapshot drop](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/proofs/snapshot/drop.md)
+- [op-reth proofs unwind](https://docs.optimism.io/node-operators/op-reth/cli/op-reth/proofs/unwind.md)
+- [App developers](https://docs.optimism.io/app-developers/index.md): Routes app developers to the quickstarts, guides, tutorials, tools, and reference for building on OP Mainnet and other OP Stack chains.
+- [App developer quickstart](https://docs.optimism.io/app-developers/quickstarts/get-started.md): Get testnet ETH, deploy your first contract to OP Sepolia, and bridge assets - your first steps on the Superchain.
+- [Integrating DeFi with Actions SDK](https://docs.optimism.io/app-developers/quickstarts/actions.md): Perform DeFi actions with lightweight, composable, and type-safe modules.
+- [Building apps on OP Stack chains](https://docs.optimism.io/app-developers/guides/building-apps.md): Learn the basics of building apps on OP Stack chains.
+- [Testing apps for OP Stack chains](https://docs.optimism.io/app-developers/guides/testing-apps.md): Learn best practices for testing apps on OP Stack chains.
+- [Configuring Actions SDK](https://docs.optimism.io/app-developers/guides/configuring-actions.md): Learn how to configure Actions SDK for your application.
+- [Connecting a wallet to Actions SDK](https://docs.optimism.io/app-developers/guides/connect-wallet-to-actions.md): Connect an embedded provider wallet to Actions SDK so it can perform DeFi actions like Lend, Borrow, Swap, and Pay.
+- [Bridging basics](https://docs.optimism.io/app-developers/guides/bridging/basics.md): Learn about the fundamentals of sending data and tokens between Ethereum and OP Mainnet.
+- [Custom bridges](https://docs.optimism.io/app-developers/guides/bridging/custom-bridge.md): Important considerations when building custom bridges for OP Mainnet.
+- [Sending data between L1 and L2](https://docs.optimism.io/app-developers/guides/bridging/messaging.md): Understand how bridging between L1 and L2 works, the messenger contracts that carry messages, what messages cost, and why the challenge period exists.
+- [Using the Standard Bridge](https://docs.optimism.io/app-developers/guides/bridging/standard-bridge.md): Learn how the Standard Bridge moves ETH and ERC-20 tokens between Layer 1 and Layer 2.
+- [Verifying bridged token addresses](https://docs.optimism.io/app-developers/guides/bridging/verify-bridged-tokens.md): Use the Superchain Token List to find and verify the correct bridged representation of a token before using the Standard Bridge.
+- [Build interoperable apps on OP Stack devnet](https://docs.optimism.io/app-developers/guides/interoperability/get-started.md): Learn about deploying contracts, cross-chain messaging, and tutorials to help you build applications on OP Stack chains.
+- [Interop message passing overview](https://docs.optimism.io/app-developers/guides/interoperability/message-passing.md): Understand how interop message passing works, from the initiating message on the source chain to the executing message on the destination chain.
+- [Reading Logs with OP Stack Interop](https://docs.optimism.io/app-developers/guides/interoperability/reading-logs.md): Understand how contracts use CrossL2Inbox to validate logs from other interop chains, and how this pull model differs from sending messages.
+- [Message expiration](https://docs.optimism.io/app-developers/guides/interoperability/message-expiration.md): What message expiration is, why it exists, and how to reemit a previously sent message if it has expired and was never relayed.
+- [Estimating transaction fees on OP Mainnet](https://docs.optimism.io/app-developers/guides/transactions/estimates.md): Learn how to properly estimate the total cost of a transaction on OP Mainnet.
+- [Integrate Subblocks in your app](https://docs.optimism.io/app-developers/guides/transactions/integrating-subblocks.md): Query pre-confirmed Subblocks state from your app using standard JSON-RPC methods with the pending tag, or through viem and ethers.
+- [Setting transaction gas parameters on OP Mainnet](https://docs.optimism.io/app-developers/guides/transactions/parameters.md): Learn how to set gas parameters for transactions on OP Mainnet.
+- [Transaction statuses on OP Mainnet](https://docs.optimism.io/app-developers/guides/transactions/statuses.md): Reference for the statuses a transaction can have on OP Mainnet.
+- [Subblocks and gas usage on OP Stack](https://docs.optimism.io/app-developers/guides/transactions/subblocks-and-gas-usage.md): Explains how Subblocks affect block gas usage, transaction inclusion, and why large transactions can be rejected or stay pending.
+- [Troubleshooting transactions](https://docs.optimism.io/app-developers/guides/transactions/troubleshooting.md): Learn how to troubleshoot common problems with transactions.
+- [Deploy a contract to OP Sepolia](https://docs.optimism.io/app-developers/tutorials/deploy-a-contract.md): Deploy your first smart contract to an OP Stack chain and interact with it using Foundry.
+- [Create an L2 token for the Standard Bridge](https://docs.optimism.io/app-developers/tutorials/bridging/standard-bridge-standard-token.md): Learn how to create a standard or custom L2 representation of an L1 ERC-20 token that works with the Standard Bridge on an OP Stack chain.
+- [Bridging ERC-20 tokens to OP Mainnet](https://docs.optimism.io/app-developers/tutorials/bridging/cross-dom-bridge-erc20.md): Learn how to use @eth-optimism/viem and viem packages to transfer ERC-20 tokens between Layer 1 (Ethereum or Sepolia) and Layer 2 (OP Mainnet or OP Sepolia).
+- [Communicating between OP Stack and Ethereum in Solidity](https://docs.optimism.io/app-developers/tutorials/bridging/cross-dom-solidity.md): Learn how to write Solidity contracts on OP Stack and Ethereum that can talk to each other.
+- [Submitting Transactions from L1](https://docs.optimism.io/app-developers/tutorials/bridging/cross-dom-bridge-eth.md): Learn how to process deposit transactions and withdrawals with Viem.
+- [Transferring ETH](https://docs.optimism.io/app-developers/tutorials/bridging/bridge-crosschain-eth.md): Learn how to transfer ETH across the OP Stack interop cluster
+- [Deposit transactions](https://docs.optimism.io/app-developers/tutorials/bridging/deposit-transactions.md): Learn about using deposit transactions with `supersim`.
+- [Replaying a failed deposit](https://docs.optimism.io/app-developers/tutorials/bridging/replay-failed-deposit.md): Learn how deposit replays work by deliberately failing a deposit against a test contract on OP Sepolia and then replaying it with more gas, end to end.
+- [Making crosschain contract calls (ping pong)](https://docs.optimism.io/app-developers/tutorials/interoperability/contract-calls.md): Understand how the CrossChainPingPong example contract uses the L2ToL2CrossDomainMessenger to make crosschain contract calls, and the design choices behind it.
+- [Deploying crosschain event composability (contests)](https://docs.optimism.io/app-developers/tutorials/interoperability/event-contests.md): Understand how the Contests example composes with cross-chain events, using the CrossL2Inbox to consume events emitted by contracts on any OP Stack chain.
+- [Making cross-chain event reads (tic-tac-toe)](https://docs.optimism.io/app-developers/tutorials/interoperability/event-reads.md): Understand how a horizontally scalable TicTacToe implementation uses CrossL2Inbox event reads to coordinate gameplay across interop chains.
+- [Relay transactions manually](https://docs.optimism.io/app-developers/tutorials/interoperability/manual-relay.md): Learn to relay transactions directly by sending the correct transaction.
+- [Interop message passing tutorial](https://docs.optimism.io/app-developers/tutorials/interoperability/message-passing.md): Learn to implement cross-chain communication on OP Stack chains by building a message passing system using the L2ToL2CrossDomainMessenger contract.
+- [First steps](https://docs.optimism.io/app-developers/tutorials/development/supersim/first-steps.md): Take your first steps with Supersim.
+- [Install Supersim](https://docs.optimism.io/app-developers/tutorials/development/supersim/installation.md): Learn how to install Supersim and start it in vanilla mode.
+- [Estimating transaction costs on OP Stack](https://docs.optimism.io/app-developers/tutorials/transactions/sdk-estimate-costs.md): Learn how to use viem to estimate the cost of a transaction on OP Stack.
+- [Tracing deposits and withdrawals](https://docs.optimism.io/app-developers/tutorials/transactions/sdk-trace-txns.md): Learn how to use the viem library to trace deposits and withdrawals between L1 and L2.
+- [Triggering OP Stack transactions from Ethereum](https://docs.optimism.io/app-developers/tutorials/transactions/send-tx-from-eth.md): Learn how to force transaction inclusion without the OP Stack Sequencer using Viem.
+- [Tools & SDKs Support Matrix](https://docs.optimism.io/app-developers/tools-sdks/support-matrix.md): One page that differentiates the OP Stack SDK surfaces and developer tools — what each is for, who owns it, where its canonical docs live, and its support status.
+- [Tools & SDKs Listing Criteria](https://docs.optimism.io/app-developers/tools-sdks/listing-criteria.md): What a tool or SDK must meet to be listed on the support matrix, the removal rule, and the maintenance sweep that keeps listings accurate.
+- [op-alloy](https://docs.optimism.io/app-developers/tools-sdks/op-alloy/intro.md)
+- [Add op-alloy to your project](https://docs.optimism.io/app-developers/tools-sdks/op-alloy/starting.md): Add the op-alloy crates to a Rust project with Cargo and pick the feature flags you need.
+- [Building](https://docs.optimism.io/app-developers/tools-sdks/op-alloy/building/index.md)
+- [Consensus](https://docs.optimism.io/app-developers/tools-sdks/op-alloy/building/consensus.md)
+- [RPC Engine Types](https://docs.optimism.io/app-developers/tools-sdks/op-alloy/building/engine.md)
+- [op-revm](https://docs.optimism.io/app-developers/tools-sdks/op-revm.md): op-revm is the Optimism variant of revm, implementing OP Stack modifications to the EVM.
+- [Testnet faucets](https://docs.optimism.io/app-developers/tools-sdks/faucets.md): Learn how to get testnet ETH on test networks like Sepolia and OP Sepolia for development and testing purposes.
+- [Block explorers](https://docs.optimism.io/app-developers/tools-sdks/block-explorers.md): Learn about different block explorers you can use to interact with contracts and view transaction history for OP Mainnet and OP Sepolia.
+- [Data and Dashboards](https://docs.optimism.io/app-developers/tools-sdks/data/data-and-dashboards.md): Learn about various dashboards and terms to explore various OP Stack metrics.
+- [Data Glossary](https://docs.optimism.io/app-developers/tools-sdks/data/data-glossary.md): This glossary explains various data terms.
+- [Analytics tools](https://docs.optimism.io/app-developers/tools-sdks/data/analytics-tools.md): Learn about platforms you can use to gather analytics and set up customizations about OP Mainnet.
+- [Oracles](https://docs.optimism.io/app-developers/tools-sdks/data/oracles.md): Learn about different oracles and how you can use them to access offchain data onchain as well as random number generation.
+- [Supersim Multichain Development Environment](https://docs.optimism.io/app-developers/tools-sdks/supersim.md): Learn how to use the Supersim local dev environment tool designed to simulate the OP Stack multi-chain environment.
+- [Account abstraction](https://docs.optimism.io/app-developers/tools-sdks/account-abstraction.md): This guide explains how to use account abstraction to remove friction from your app experience
+- [OP Stack RPC directory](https://docs.optimism.io/app-developers/reference/rpc-providers.md): Find public RPC endpoints and production RPC providers across all OP Stack networks.
+- [Integrating wallets](https://docs.optimism.io/app-developers/reference/actions/integrating-wallets.md): Understand the wallet options Actions SDK supports, embedded wallet providers, gas sponsorship, and smart wallets.
+- [Wallet Documentation](https://docs.optimism.io/app-developers/reference/actions/wallet-definitions.md): API reference for Actions SDK wallet classes, functions, and parameters.
+- [Lend Documentation](https://docs.optimism.io/app-developers/reference/actions/lend-documentation.md): API reference for Actions SDK lending operations, functions, and parameters.
+- [Swap Documentation](https://docs.optimism.io/app-developers/reference/actions/swap-documentation.md): API reference for Actions SDK swap operations, functions, and parameters.
+- [Interoperability predeploys](https://docs.optimism.io/app-developers/reference/contracts/interop/predeploy.md): Learn how interoperability predeploys work.
+- [Bridged token addresses](https://docs.optimism.io/app-developers/reference/tokens/tokenlist.md): This reference guide lists the correct bridged token addresses for each token.
+- [OPChainA (chainID 901)](https://docs.optimism.io/app-developers/reference/tools/supersim/chain-a.md): Learn network details and contract addresses for OPChainA (chainID 901).
+- [OPChainB (chainID 902)](https://docs.optimism.io/app-developers/reference/tools/supersim/chain-b.md): Learn network details and contract addresses for OPChainB (chainID 902).
+- [Fork mode](https://docs.optimism.io/app-developers/reference/tools/supersim/fork.md): Learn how to fork Supersim.
+- [Included contracts](https://docs.optimism.io/app-developers/reference/tools/supersim/included-contracts.md): Learn about the Supersim included contracts.
+- [Vanilla mode](https://docs.optimism.io/app-developers/reference/tools/supersim/vanilla.md): Learn how to use Supersim in vanilla mode (non-forked).
+- [The OP Stack](https://docs.optimism.io/op-stack/introduction/op-stack.md): The standard framework for building Ethereum Layer 2 Rollups.
+- [Fact sheet](https://docs.optimism.io/op-stack/introduction/fact-sheet.md): A quick look of the OP Stack's capabilities
+- [Learn the OP Stack](https://docs.optimism.io/op-stack/learn/index.md): A linear learning track that takes you from newcomer to comfortable with the OP Stack, through existing pages in a recommended order.
+- [Subblocks](https://docs.optimism.io/op-stack/features/subblocks.md): Understand how Subblocks deliver 200 ms pre-confirmations on OP Stack chains, what a subblock payload contains, and which guarantees they preserve.
+- [Custom Gas Token](https://docs.optimism.io/op-stack/features/custom-gas-token.md): Learn how utilize a Custom Gas Token for OP Stack chains.
+- [Bridged USDC Standard on OP Stack](https://docs.optimism.io/op-stack/features/bridged-usdc-standard.md): Overview of the Bridged USDC Standard and how chain operators can deploy it.
+- [Span Batches](https://docs.optimism.io/op-stack/features/span-batches.md): Learn what span batches are and how they reduce the batch submission overhead of OP Stack chains.
+- [SendRawTransactionConditional explainer](https://docs.optimism.io/op-stack/features/send-raw-transaction-conditional.md): Learn about the eth_sendRawTransactionConditional RPC method for conditional transaction inclusion on the OP Stack.
+- [L2 Contract Manager](https://docs.optimism.io/op-stack/features/l2-contract-manager.md): Learn how the L2 Contract Manager (L2CM) enables governance-approved L2 smart contract upgrades through the consensus layer.
+- [Osaka on L2](https://docs.optimism.io/op-stack/features/osaka-on-l2.md): Learn about the Osaka EIP activations on L2, including the EIP-7825 per-transaction gas limit and precompile gas changes.
+- [OP Stack preinstalls](https://docs.optimism.io/op-stack/features/preinstalls.md): Learn how to use preinstalls on your chain.
+- [Alt-DA Mode Explainer](https://docs.optimism.io/op-stack/features/experimental/alt-da-mode.md): Learn the basic process, benefits, and considerations for running an Alt-DA mode chain.
+- [OP Stack protocol](https://docs.optimism.io/op-stack/protocol/index.md): The protocol layer's home on this site, routing to the normative specifications, the rollup explainers, and the hardfork registry.
+- [Rollup protocol overview](https://docs.optimism.io/op-stack/protocol/overview.md): Learn how Optimistic Rollups work at a high level.
+- [Design philosophy & principles](https://docs.optimism.io/op-stack/protocol/design-principles.md): Learn the design philosophy and principles used to build the OP Stack.
+- [Differences from Ethereum](https://docs.optimism.io/op-stack/protocol/differences.md): Learn the minor differences between the behavior of Ethereum and the OP Stack.
+- [OP Stack components](https://docs.optimism.io/op-stack/protocol/components.md): Learn about OP Stack components including the different layers and modules available for development.
+- [Derivation pipeline](https://docs.optimism.io/op-stack/protocol/derivation-pipeline.md): Overview of the derivation pipeline in the OP Stack protocol.
+- [Sequencer outages](https://docs.optimism.io/op-stack/protocol/outages.md): Learn what happens if the Sequencer goes down and how you can be prepared.
+- [Network upgrades](https://docs.optimism.io/op-stack/protocol/network-upgrades.md): The hardfork registry — activation times, governing specs, and minimum component versions for every OP Stack network upgrade.
+- [Lagoon](https://docs.optimism.io/op-stack/protocol/hardforks/lagoon.md): Hardfork registry entry for the Lagoon network upgrade, which activates Superchain interop.
+- [Karst](https://docs.optimism.io/op-stack/protocol/hardforks/karst.md): Hardfork registry entry for the Karst network upgrade, which introduced the L2 Contract Manager and Osaka EIPs on L2.
+- [Jovian](https://docs.optimism.io/op-stack/protocol/hardforks/jovian.md): Hardfork registry entry for the Jovian network upgrade, which introduced the minimum base fee and DA footprint limit.
+- [Isthmus](https://docs.optimism.io/op-stack/protocol/hardforks/isthmus.md): Hardfork registry entry for the Isthmus network upgrade, which brought L1's Pectra upgrade to the OP Stack and added the operator fee.
+- [Holocene](https://docs.optimism.io/op-stack/protocol/hardforks/holocene.md): Hardfork registry entry for the Holocene network upgrade, which introduced stricter derivation and dynamic EIP-1559 parameters.
+- [Granite](https://docs.optimism.io/op-stack/protocol/hardforks/granite.md): Hardfork registry entry for the Granite network upgrade, a hardening upgrade limiting bn256Pairing input size.
+- [Fjord](https://docs.optimism.io/op-stack/protocol/hardforks/fjord.md): Hardfork registry entry for the Fjord network upgrade, which introduced FastLZ fee estimation and Brotli compression.
+- [Ecotone](https://docs.optimism.io/op-stack/protocol/hardforks/ecotone.md): Hardfork registry entry for the Ecotone network upgrade, which adopted EIP-4844 blobs for data availability.
+- [Delta](https://docs.optimism.io/op-stack/protocol/hardforks/delta.md): Hardfork registry entry for the Delta network upgrade, which introduced span batches.
+- [Canyon](https://docs.optimism.io/op-stack/protocol/hardforks/canyon.md): Hardfork registry entry for the Canyon network upgrade, which brought L1's Shapella upgrade to the OP Stack.
+- [Regolith](https://docs.optimism.io/op-stack/protocol/hardforks/regolith.md): Hardfork registry entry for the Regolith network upgrade, which corrected deposit processing after Bedrock.
+- [The Blockspace and Standard Rollup Charters](https://docs.optimism.io/op-stack/protocol/blockspace-charter.md): Learn about Blockspace Charters, the Standard Rollup Charter, and the superchain-registry.
+- [Block time research](https://docs.optimism.io/op-stack/research/block-time-research.md): Sunnyside Labs' (formerly Test in Prod) and OP Labs 1 second block time research.
+- [Smart Contract overview](https://docs.optimism.io/op-stack/protocol/smart-contracts.md): Learn about the smart contracts that make up the OP Stack.
+- [The superchain-registry](https://docs.optimism.io/op-stack/protocol/superchain-registry.md): Learn about OP Stack chain classification, what makes a chain standard, and the superchain-registry.
+- [Privileged Roles in OP Stack Chains](https://docs.optimism.io/op-stack/protocol/privileged-roles.md): Learn about the privileged roles in OP Stack chains.
+- [Stack Components](https://docs.optimism.io/op-stack/components/index.md): One canonical hub page per OP Stack component, grouped by protocol role.
+- [op-batcher](https://docs.optimism.io/op-stack/components/op-batcher.md): Canonical hub for op-batcher, the OP Stack batch submitter — what it does, who runs it, and where its guides, reference, releases, source, and spec live.
+- [op-conductor](https://docs.optimism.io/op-stack/components/op-conductor.md): Canonical hub for op-conductor, the high-availability sequencer coordination service, covering what it does, who runs it, and where its guides, reference, releases, and source live.
+- [op-node](https://docs.optimism.io/op-stack/components/op-node.md): Canonical hub for op-node, the OP Stack rollup node in Go, covering what it does, who runs it, and where its guides, reference, releases, source, and spec live.
+- [kona-node](https://docs.optimism.io/op-stack/components/kona-node.md): Canonical hub for kona-node, the Rust implementation of the OP Stack rollup node, with links to its guides, reference, releases, source, and spec.
+- [op-reth](https://docs.optimism.io/op-stack/components/op-reth.md): Canonical hub for op-reth, the OP Stack execution client built on reth, covering what it does, who runs it, and where its guides, reference, releases, source, and spec live.
+- [op-proposer](https://docs.optimism.io/op-stack/components/op-proposer.md): Canonical hub for op-proposer, the OP Stack output proposer, covering what it does, who runs it, and where its guides, reference, releases, source, and spec live.
+- [op-challenger](https://docs.optimism.io/op-stack/components/op-challenger.md): Canonical hub for op-challenger, the OP Stack dispute game challenge service, covering what it does, who runs it, and where its guides, releases, source, and spec live.
+- [cannon](https://docs.optimism.io/op-stack/components/cannon.md): Canonical hub for cannon, the OP Stack fault proof virtual machine — what it does, who runs it, and where its guides, releases, source, and spec live.
+- [kona-client](https://docs.optimism.io/op-stack/components/kona-client.md): Canonical hub for kona-client, the OP Stack fault proof program, covering what it does, who runs it, and where its guides, releases, source, and spec live.
+- [kona-host](https://docs.optimism.io/op-stack/components/kona-host.md): Canonical hub for kona-host, the fault proof host that serves preimage data to kona-client, covering what it does, who runs it, and where its guides, releases, source, and spec live.
+- [op-contracts](https://docs.optimism.io/op-stack/components/op-contracts.md): Canonical hub for op-contracts, the OP Stack L1 and L2 smart contracts, covering what they do, how they are deployed and upgraded, and where their reference, releases, source, and specs live.
+- [op-deployer](https://docs.optimism.io/op-stack/components/op-deployer.md): Canonical hub for op-deployer, the OP Stack chain deployment tool, covering what it does, who runs it, and where its guides, reference, releases, and source live.
+- [proxyd](https://docs.optimism.io/op-stack/components/proxyd.md): Canonical hub for proxyd, the RPC request router and proxy, covering what it does, who runs it, and where its guide, configuration, releases, and source live.
+- [Cross-Domain Overview](https://docs.optimism.io/op-stack/bridging/cross-domain.md): An overview of the lifecycle of an OP Stack cross-chain transaction, linking the detailed explainers for deposits, transaction flow, and withdrawals.
+- [Deposit flow](https://docs.optimism.io/op-stack/bridging/deposit-flow.md): Learn the deposit flow process for L2 deposit transactions, triggered by events on L1.
+- [Withdrawal flow](https://docs.optimism.io/op-stack/bridging/withdrawal-flow.md): Learn the withdrawal flow process for transactions sent from L2 to L1.
+- [Transaction fees on OP Mainnet](https://docs.optimism.io/op-stack/transactions/fees.md): Learn how transaction fees work on OP Mainnet.
+- [Fee vaults](https://docs.optimism.io/op-stack/transactions/fee-vaults.md): Learn how fee vaults work on OP Stack chains, where transaction fees are collected, and how the withdrawal mechanism operates.
+- [Forced Transaction](https://docs.optimism.io/op-stack/transactions/forced-transaction.md): Learn the forced transaction flow during sequencer downtime.
+- [Transaction finality](https://docs.optimism.io/op-stack/transactions/transaction-finality.md): Learn when transactions on OP Stack chains can be considered finalized.
+- [Transaction flow](https://docs.optimism.io/op-stack/transactions/transaction-flow.md): Learn the transaction flow process for rollup transactions.
+- [Fault proofs](https://docs.optimism.io/op-stack/fault-proofs/index.md): One place to learn the OP Stack fault proof system, from the gentle introduction through the components, hands-on guides, bond economics, and the normative spec.
+- [Fault proofs explainer](https://docs.optimism.io/op-stack/fault-proofs/explainer.md): Learn about the OP Stack's Fault Proof System.
+- [Fault proofs security](https://docs.optimism.io/op-stack/fault-proofs/fp-security.md): Learn about changes to the security model for the Fault Proofs System.
+- [FP system components](https://docs.optimism.io/op-stack/fault-proofs/fp-components.md): Learn about Fault Proof System components and how they work together to enhance decentralization in the Optimism ecosystem.
+- [Fault proof VM: Cannon](https://docs.optimism.io/op-stack/fault-proofs/cannon.md): Learn about Cannon and its default operation as part of Optimism's Fault Proof Virtual Machine.
+- [Fault proof VM: MIPS64.sol](https://docs.optimism.io/op-stack/fault-proofs/mips.md): Learn about the `MIPS64.sol` smart contract that works as part of Optimism's Fault Proof Virtual Machine.
+- [OP-Challenger explainer](https://docs.optimism.io/op-stack/fault-proofs/challenger.md): Learn about OP-Challenger and how it operates within the OP Stack's Fault Proof System.
+- [Fault proofs reference](https://docs.optimism.io/op-stack/fault-proofs/reference.md): Reference for OP Stack dispute game types, core fault proof contracts, and standard game parameters.
+- [Fault Proof Program Development](https://docs.optimism.io/op-stack/fault-proofs/kona/fpp-dev/intro.md)
+- [Environment](https://docs.optimism.io/op-stack/fault-proofs/kona/fpp-dev/env.md)
+- [Supported Targets](https://docs.optimism.io/op-stack/fault-proofs/kona/fpp-dev/targets.md)
+- [Prologue](https://docs.optimism.io/op-stack/fault-proofs/kona/fpp-dev/prologue.md)
+- [Execution](https://docs.optimism.io/op-stack/fault-proofs/kona/fpp-dev/execution.md)
+- [Epilogue](https://docs.optimism.io/op-stack/fault-proofs/kona/fpp-dev/epilogue.md)
+- [Kona Proof SDK](https://docs.optimism.io/op-stack/fault-proofs/kona/proof/intro.md)
+- [Understanding the OP Stack STF](https://docs.optimism.io/op-stack/fault-proofs/kona/proof/stf.md): How Kona composes the derivation pipeline and execution engine into a verifiable OP Stack state transition, and why kona-client proves a single block by default.
+- [FPVM Backend](https://docs.optimism.io/op-stack/fault-proofs/kona/proof/fpvm-backend.md)
+- [Custom Backends](https://docs.optimism.io/op-stack/fault-proofs/kona/proof/custom-backend.md): Implement kona-derive and kona-executor data source traits to run the OP Stack STF on a custom verifiable backend such as a zkVM or TEE.
+- [`kona-executor` Extensions](https://docs.optimism.io/op-stack/fault-proofs/kona/proof/exec-ext.md)
+- [Security policy and bug bounty program](https://docs.optimism.io/op-stack/security/security-policy.md): Learn about the bug bounty program and best practices for reporting bugs in the OP Stack codebase.
+- [Audit reports](https://docs.optimism.io/op-stack/security/audit-reports.md): A comprehensive list of security reviews for the OP Stack, including links to detailed audit reports and descriptions of their scope.
+- [OP Stack security model](https://docs.optimism.io/op-stack/security/faq-sec-model.md): Learn about the OP Stack security model and answers to common questions.
+- [Pausing the bridge](https://docs.optimism.io/op-stack/security/pause.md): Learn how the OP Stack bridge can be paused as backup safety mechanism.
+- [Crosschain security measures for safe interoperability](https://docs.optimism.io/op-stack/security/interop-security.md): Learn more about crosschain security measures for safe interoperability
+- [Interoperability](https://docs.optimism.io/op-stack/interop/index.md): One place to learn OP Stack interoperability, from the gentle introduction through message passing, safety, hands-on tutorials, and the normative spec.
+- [OP Stack interoperability explainer](https://docs.optimism.io/op-stack/interop/explainer.md): Learn the basics of OP Stack interoperability.
+- [OP Supernode](https://docs.optimism.io/op-stack/interop/supernode.md): Learn how op-supernode runs every chain in an interop dependency set inside one process.
+- [Interop reorg awareness](https://docs.optimism.io/op-stack/interop/reorg.md): How OP Stack interop enables low-latency interop and avoids the double-spend problem.
+- [Superchain ETH Bridge](https://docs.optimism.io/op-stack/interop/superchain-eth-bridge.md): Learn basic details about Interoperable ETH.
+- [OP Mainnet](https://docs.optimism.io/op-mainnet/index.md): Routes builders deploying on OP Mainnet to the network information, contract addresses, finality reference, and chain history they need.
+- [Connecting to OP Mainnet](https://docs.optimism.io/op-mainnet/network-information/connecting-to-op.md): Documentation for OP Mainnet and OP Sepolia. This page covers network information including network names, chain IDs, RPC endpoints, currency symbols, block explorers, and contract addresses.
+- [OP Mainnet Contract Addresses](https://docs.optimism.io/op-mainnet/network-information/op-addresses.md): A comprehensive list of L1 and L2 contract addresses for OP Mainnet and OP Sepolia.
+- [Snapshots](https://docs.optimism.io/op-mainnet/network-information/snapshots.md): Find download links for data directories and database snapshots for running your own node.
+- [Transaction finality on OP Mainnet](https://docs.optimism.io/op-mainnet/network-information/transaction-finality.md): How long transactions take to reach each finality stage on OP Mainnet.
+- [Legacy Geth configuration](https://docs.optimism.io/node-operators/guides/configuration/legacy-geth.md): Learn how to configure Legacy Geth for serving historical execution traces on upgraded OP Stack networks.
+- [Legacy Geth configuration options](https://docs.optimism.io/node-operators/reference/legacy-geth-config.md): Reference for Legacy Geth (l2geth) environment variables and the RPC methods routed to it.
+- [Accessing pre-regenesis history](https://docs.optimism.io/op-mainnet/pre-bedrock-history/regenesis-history.md): Learn how to access pre-regenesis history using the Etherscan CSV exporting tool.
+- [Lost pre-regenesis data](https://docs.optimism.io/op-mainnet/pre-bedrock-history/lost-pre-regenesis-data.md): Understand why some OP Mainnet transaction data from January to July 2021 cannot be fully recovered.
+- [Protocol Upgrades](https://docs.optimism.io/governance/protocol-upgrades.md): Learn how the OP Stack stay up to date with the latest innovations.
+- [Capital Allocation](https://docs.optimism.io/governance/capital-allocation.md): Learn how Optimism allocates capital for long-term success.
+- [Evolution & Experimentation](https://docs.optimism.io/governance/evolution-and-experimentation.md): Learn about Optimism's commitment to iterative improvement and experimentation.
+- [How identity works in the Optimism Collective](https://docs.optimism.io/governance/eas-attestations.md): Learn how the Optimism Collective uses onchain attestations to represent Citizenship, project identity, and governance roles.
+- [EAS contracts and attestation schemas](https://docs.optimism.io/governance/attestation-schemas.md): Contract addresses for the Ethereum Attestation Service and the attestation schemas used across the Optimism Collective.
+- [Dashboards, trackers, and addresses](https://docs.optimism.io/governance/resources.md): Key governing documents, trackers, budget reports, and Optimism Foundation wallet addresses in one place.
+- [FAQs](https://docs.optimism.io/governance/gov-faq.md): Frequently Asked Questions about how Optimism evolves.
+- [Network Notices](https://docs.optimism.io/notices/index.md): Active upgrade notices, deprecations, and network change announcements for OP Stack operators.
+- [Upgrade 20](https://docs.optimism.io/notices/upgrade-20.md): Prepare Fault Proof services and contract integrations for the Upgrade 20 move to Super Root Dispute Games.
+- [Prepare for interop on OP Sepolia and Unichain Sepolia](https://docs.optimism.io/notices/interop-prep.md): Node operator action checklist for the OP Sepolia and Unichain Sepolia interop activation, targeted in July of 2026.
+- [Specialized op-node topology with light nodes](https://docs.optimism.io/notices/specialized-node-topology.md): OP Labs highly recommends migrating from homogeneous op-node fleets to a specialized topology where only designated source nodes derive from L1 and the rest run as light nodes via --l2.follow.source.
+- [Subblocks: 200 ms interval and stream payload changes](https://docs.optimism.io/notices/subblocks.md): Subblocks (formerly Flashblocks) move to a 200 ms interval on OP Sepolia and OP Mainnet, and zero four fields in the stream payload.
+- [Notice archive](https://docs.optimism.io/notices/archive/index.md): Completed network notices for OP Stack operators, newest first, with the date each change took effect.
+- [Releases](https://docs.optimism.io/releases/index.md): Latest stable releases for all OP Stack components. Select a component to view its full release history.
+- [op-node Releases](https://docs.optimism.io/releases/op-node.md): Release history for op-node. OP Stack consensus-layer client.
+- [kona-node Releases](https://docs.optimism.io/releases/kona-node.md): Release history for kona-node. Rust implementation of the OP Stack rollup node.
+- [op-reth Releases](https://docs.optimism.io/releases/op-reth.md): Release history for op-reth. OP Stack execution layer built on Reth.
+- [op-batcher Releases](https://docs.optimism.io/releases/op-batcher.md): Release history for op-batcher. L2 batch submitter.
+- [op-proposer Releases](https://docs.optimism.io/releases/op-proposer.md): Release history for op-proposer. L2 output root proposer.
+- [op-challenger Releases](https://docs.optimism.io/releases/op-challenger.md): Release history for op-challenger. Dispute game challenger.
+- [op-contracts Releases](https://docs.optimism.io/releases/op-contracts.md): Release history for op-contracts. OP Stack L1 and L2 smart contracts.
+- [kona-client Releases](https://docs.optimism.io/releases/kona-client.md): Release history for kona-client. Rust fault proof client binary.
+- [kona-host Releases](https://docs.optimism.io/releases/kona-host.md): Release history for kona-host. Rust fault proof host binary.
+- [op-deployer Releases](https://docs.optimism.io/releases/op-deployer.md): Release history for op-deployer. OP Stack chain deployment and upgrade tool.
+- [op-conductor Releases](https://docs.optimism.io/releases/op-conductor.md): Release history for op-conductor. High-availability sequencer coordination service.
+- [proxyd Releases](https://docs.optimism.io/releases/proxyd.md): Release history for proxyd. RPC request router and proxy.
+- [op-acceptor Releases](https://docs.optimism.io/releases/op-acceptor.md): Release history for op-acceptor. Network acceptance tester for OP Stack devnets.
+
+## OpenAPI Specs
+
+- [openapi](https://docs.optimism.io/api-reference/openapi.json)
+
+## Optional
+
+- [Status](https://status.optimism.io)
+- [Faucet](https://console.optimism.io/faucet)
+- [Bridge](https://app.optimism.io/bridge/deposit)

@@ -1,0 +1,160 @@
+{
+  "item": [
+    {
+      "id": "7036c4fd-7587-4460-bf71-724c4666ddd4",
+      "name": "JSON-RPC",
+      "description": {
+        "content": "Standard Ethereum JSON-RPC method invocation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f9a90032-44a4-499d-9743-593a524bc8eb",
+          "name": "Invoke a JSON-RPC method",
+          "request": {
+            "name": "Invoke a JSON-RPC method",
+            "description": {
+              "content": "Execute any supported Ethereum JSON-RPC method (e.g. `eth_blockNumber`,\n`eth_chainId`, `eth_getBalance`, `eth_call`, `eth_getTransactionByHash`,\n`eth_getLogs`, `net_version`, `web3_clientVersion`).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"<string>\",\n  \"method\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "368e84b8-60ae-41ca-b597-1ed1f452abe4",
+              "name": "JSON-RPC response (single or batch).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"eth_blockNumber\",\n  \"params\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": \"string\",\n  \"result\": {},\n  \"error\": {\n    \"code\": 9957,\n    \"message\": \"string\",\n    \"data\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e72ff83-1c5c-4a1a-b423-d415aaeb989f",
+              "name": "Rate limit exceeded on the public endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"eth_blockNumber\",\n  \"params\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mainnet.optimism.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5387621f-6ad0-42cd-88c1-19efc9c7a585",
+    "name": "OP Mainnet JSON-RPC API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public Ethereum JSON-RPC endpoint for OP Mainnet (chain ID 10) and the\nOP Sepolia testnet (chain ID 11155420). All standard Ethereum `eth_*`\nnamespace methods are supported plus Optimism extensions used for L1\nfee estimation and rollup-specific data.\n\nAll RPC calls are POSTed to the root path of the endpoint with a\nstandard JSON-RPC 2.0 envelope. The public endpoints are open\n(unauthenticated) and rate limited; production teams typically route\nthrough Alchemy, QuickNode, Infura, or a self-hosted op-geth/op-node\npair.\n\n\nContact Support:\n Name: Optimism",
+      "type": "text/plain"
+    }
+  }
+}
