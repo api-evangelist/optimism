@@ -100,6 +100,10 @@ apis:
   tags:
   - OP Stack
   - Rollup
+  - Open-Source
+  tags_raw:
+  - OP Stack
+  - Rollup
   - Open Source
   properties:
   - type: Documentation
@@ -145,6 +149,10 @@ apis:
   humanURL: https://docs.optimism.io/stack/interop/tools/supersim
   baseURL: https://github.com/ethereum-optimism/supersim
   tags:
+  - Super SIM
+  - Interop
+  - Local Dev
+  tags_raw:
   - Supersim
   - Interop
   - Local Dev
@@ -161,6 +169,9 @@ apis:
   tags:
   - Block Explorer
   - Etherscan
+  tags_raw:
+  - Block Explorer
+  - Etherscan
   - API
   properties:
   - type: Documentation
@@ -173,6 +184,9 @@ apis:
   humanURL: https://optimism.blockscout.com
   baseURL: https://optimism.blockscout.com/api
   tags:
+  - Block Explorer
+  - Blockscout
+  tags_raw:
   - Block Explorer
   - Blockscout
   - API
