@@ -9,6 +9,19 @@ description: >-
   Developers interact via standard Ethereum JSON-RPC, the Optimism (Viem-based) SDK,
   the canonical Optimism Bridge, OP Stack operator tooling (op-geth, op-node,
   op-deployer, op-batcher, op-proposer, op-challenger), and the Superchain Registry.
+deliveryModel:
+  model: self-hosted
+  license: MIT
+  open_source: true
+  commercial: false
+  callable_host: true
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: unknown
@@ -204,6 +217,16 @@ apis:
   - type: OpenAPI
     url: openapi/optimism-json-rpc-api-openapi.yml
 common:
+- type: IssueTracker
+  url: https://github.com/ethereum-optimism/optimism/issues
+- type: Releases
+  url: https://github.com/ethereum-optimism/optimism/releases
+- type: SecurityPolicy
+  url: https://github.com/ethereum-optimism/optimism/blob/develop/SECURITY.md
+- type: CodeOfConduct
+  url: https://github.com/ethereum-optimism/.github/blob/master/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/ethereum-optimism/optimism/blob/develop/CONTRIBUTING.md
 - type: License
   name: MIT
   url: https://github.com/ethereum-optimism/optimism/blob/develop/LICENSE
