@@ -162,7 +162,7 @@ apis:
   humanURL: https://docs.optimism.io/stack/interop/tools/supersim
   baseURL: https://github.com/ethereum-optimism/supersim
   tags:
-  - Super SIM
+  - Supersim
   - Interop
   - Local Dev
   tags_raw:
