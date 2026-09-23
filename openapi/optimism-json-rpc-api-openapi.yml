@@ -1,26 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OP Mainnet JSON-RPC API
+  title: OP Mainnet JSON RPC API
   description: 'Public Ethereum JSON-RPC endpoint for OP Mainnet (chain ID 10) and the
 
-    OP Sepolia testnet (chain ID 11155420). All standard Ethereum `eth_*`
-
-    namespace methods are supported plus Optimism extensions used for L1
-
-    fee estimation and rollup-specific data.
-
-
-    All RPC calls are POSTed to the root path of the endpoint with a
-
-    standard JSON-RPC 2.0 envelope. The public endpoints are open
-
-    (unauthenticated) and rate limited; production teams typically route
-
-    through Alchemy, QuickNode, Infura, or a self-hosted op-geth/op-node
-
-    pair.
-
-    '
+    OP Sepolia testnet (chain ID 11155420).'
   version: 1.0.0
   contact:
     name: Optimism
@@ -43,9 +26,7 @@ paths:
 
         `eth_chainId`, `eth_getBalance`, `eth_call`, `eth_getTransactionByHash`,
 
-        `eth_getLogs`, `net_version`, `web3_clientVersion`).
-
-        '
+        `eth_getLogs`, `net_version`, `web3_clientVersion`).'
       operationId: invokeJsonRpc
       requestBody:
         required: true
