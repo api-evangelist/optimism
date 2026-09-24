@@ -44,6 +44,7 @@ tags:
 - Rollup
 - Bridge
 - Optimism
+- Real-Time
 created: '2026-05-23'
 modified: '2026-05-29'
 specificationVersion: '0.23'
@@ -67,8 +68,6 @@ apis:
   - type: AsyncAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml
-  - url: graphql/optimism-graphql.md
-    type: GraphQL
 - aid: optimism:sepolia-rpc
   name: OP Sepolia JSON-RPC
   description: >-
@@ -114,11 +113,12 @@ apis:
   tags:
   - OP Stack
   - Rollup
-  - Open-Source
+  - Open Source
   tags_raw:
   - OP Stack
   - Rollup
   - Open Source
+  - Open-Source
   properties:
   - type: Documentation
     url: https://docs.optimism.io/stack/getting-started
