@@ -1,30 +1,28 @@
-# Kin Score artifact — optimism — 2026-09-01T210448
+# Kin Score artifact — optimism — 2026-10-03T000835
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: optimism
-  schema_version: 0.18.0
-  scored_at: '2026-09-01'
-  run_ts: 2026-09-01T210448
-  composite: 46.3
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T000835
+  composite: 42.4
   band: developing
   facets:
-    discoverability: 75.9
-    contract_quality: 60.7
-    governance: 13.6
-    operational_transparency: 52.6
-    developer_ergonomics: 16.7
-    commercial_clarity: 28.9
+    discoverability: 75.0
+    contract_quality: 55.9
     contract_governance: 13.6
-    access_clarity: 28.9
+    operational_transparency: 50.5
+    developer_ergonomics: 16.7
+    access_clarity: 26.8
   agent_readiness:
-    score: 23.4
-    band: agent-aware
+    score: 32.0
+    band: agent-ready
     dimensions:
       spec_presence: true
       agentic_access: derived
       reversibility_documented: false
-      mcp_server: false
+      mcp_server: verified
       auth_clarity: false
       idempotency: false
       error_semantics: false
@@ -40,10 +38,17 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 5.9
+    matched_via: fallback
   open_source:
     applies: true
     score: 100.0
   provenance:
+    mcp: first-party
     agentic_access: derived
     contracts:
       total: 1
