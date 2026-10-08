@@ -218,6 +218,12 @@ apis:
   - type: OpenAPI
     url: openapi/optimism-json-rpc-api-openapi.yml
 common:
+- type: Plans
+  url: plans/optimism-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/optimism-rate-limits.yml
+- type: FinOps
+  url: finops/optimism-finops.yml
 - type: IssueTracker
   url: https://github.com/ethereum-optimism/optimism/issues
 - type: Releases
