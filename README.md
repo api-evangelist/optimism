@@ -1,4 +1,4 @@
-# Optimism (optimism)
+# Optimism
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,218 +66,159 @@
 
 Optimism is an Ethereum Layer 2 scaling network and the originator of the OP Stack — an open-source, modular rollup framework that powers OP Mainnet and a growing Superchain of interoperable chains (Base, Mode, Zora, Worldchain, and others). Developers interact via standard Ethereum JSON-RPC, the Optimism (Viem-based) SDK, the canonical Optimism Bridge, OP Stack operator tooling (op-geth, op-node, op-deployer, op-batcher, op-proposer, op-challenger), and the Superchain Registry.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/apis.yml)
+**Areas:** Layer 2 · Ethereum · OP Stack · Superchain · JSON-RPC · Rollup · Bridge · Optimism · Real-Time
 
-## Tags
+## Optimism on APIs.io
 
-- Layer 2
-- Ethereum
-- OP Stack
-- Superchain
-- JSON-RPC
-- Rollup
-- Bridge
+Everything profiled for Optimism is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/optimism/](https://apis.io/providers/optimism/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (10)
 
-- **Created:** 2026-05-23
-- **Modified:** 2026-05-29
+- [OP Mainnet JSON-RPC](https://apis.io/apis/optimism/mainnet-rpc/) — Public Ethereum JSON-RPC endpoint for OP Mainnet (chain ID 10). Supports standard eth_* methods plus Optimism extensions for L1 fee estimation, deposit…
+- [OP Sepolia JSON-RPC](https://apis.io/apis/optimism/sepolia-rpc/) — Public Ethereum JSON-RPC endpoint for the OP Sepolia testnet (chain ID 11155420) used for development and integration testing.
+- [Optimism Bridge (Standard Bridge)](https://apis.io/apis/optimism/bridge/) — Canonical cross-chain bridge for depositing and withdrawing ETH and ERC-20 tokens between Ethereum L1 and OP Mainnet, secured by the OP Stack StandardBridge…
+- [OP Stack](https://apis.io/apis/optimism/op-stack/) — Open-source, modular Ethereum L2 rollup stack. The monorepo at github.com/ethereum-optimism/optimism contains op-geth (execution), op-node (consensus),…
+- [Superchain Registry](https://apis.io/apis/optimism/superchain-registry/) — Source-of-truth index of chains that are part of the Optimism Superchain — genesis files, deployment addresses, RPC endpoints, explorers, and chain metadata…
+- [Optimism SDK (Viem extension)](https://apis.io/apis/optimism/viem-sdk/) — Modern Optimism SDK exposed as a Viem extension (viem/op-stack) for L1<->L2 message tracking, deposit and withdrawal flows, fee estimation, and Superchain…
+- [Supersim](https://apis.io/apis/optimism/supersim/) — Local Superchain simulator that spins up multiple OP Stack chains for developing and testing cross-chain interop messages (CrossL2Inbox /…
+- [Optimism Etherscan](https://apis.io/apis/optimism/etherscan-explorer/) — Etherscan-family block explorer for OP Mainnet and OP Sepolia with REST API access for contracts, transactions, and addresses.
+- [Optimism Blockscout](https://apis.io/apis/optimism/blockscout-explorer/) — Open-source Blockscout block explorer for OP Mainnet with REST and GraphQL APIs.
+- [Optimism JSON-RPC API](https://apis.io/apis/optimism/optimism-json-rpc-api/) — Standard Ethereum JSON-RPC method invocation.
 
-## APIs
+### Published properties
 
-### OP Mainnet JSON-RPC
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Public Ethereum JSON-RPC endpoint for OP Mainnet (chain ID 10). Supports standard eth_* methods plus Optimism extensions for L1 fee estimation, deposit tracking, and withdrawal proving. Public endpoint is rate-limited and does not provide WebSockets; production teams front it with Alchemy, QuickNode, Infura, or self-hosted op-geth + op-node.
+#### AsyncAPI (1)
 
-- **Human URL:** [https://docs.optimism.io/superchain/networks](https://docs.optimism.io/superchain/networks)
-- **Base URL:** `https://mainnet.optimism.io`
+Event-driven and webhook contracts.
 
-#### Tags
+- [Optimism (OP Stack) WebSocket JSON-RPC API](https://apis.io/asyncapis/optimism/optimism-asyncapi/)
 
-- JSON-RPC
-- Mainnet
-- OP Mainnet
+#### Event channels (5)
 
-#### Properties
+Individual events and webhooks the provider emits.
 
-- [Documentation](https://docs.optimism.io/superchain/networks)
-- [AsyncAPI](https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [eth_subscribe.logs](https://apis.io/channels/optimism/eth-subscribe-logs/)
+- [eth_subscribe.newHeads](https://apis.io/channels/optimism/eth-subscribe-newheads/)
+- [eth_subscribe.newPendingTransactions](https://apis.io/channels/optimism/eth-subscribe-newpendingtransactions/)
+- [eth_subscribe.syncing](https://apis.io/channels/optimism/eth-subscribe-syncing/)
+- [eth_unsubscribe](https://apis.io/channels/optimism/eth-unsubscribe/)
 
-### OP Sepolia JSON-RPC
+#### GraphQL (1)
 
-Public Ethereum JSON-RPC endpoint for the OP Sepolia testnet (chain ID 11155420) used for development and integration testing.
+GraphQL schemas.
 
-- **Human URL:** [https://docs.optimism.io/superchain/networks](https://docs.optimism.io/superchain/networks)
-- **Base URL:** `https://sepolia.optimism.io`
+- [Moved to /providers/optimism/](https://apis.io/graphqls/optimism/optimism-graphql/)
 
-#### Tags
+#### MCP servers (1)
 
-- JSON-RPC
-- Testnet
-- Sepolia
+Model Context Protocol servers that expose the API to agents.
 
-#### Properties
+- [optimism](https://apis.io/servers/optimism/optimism/)
 
-- [Documentation](https://docs.optimism.io/superchain/networks)
-- [AsyncAPI](https://raw.githubusercontent.com/api-evangelist/optimism/refs/heads/main/asyncapi/optimism-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Agentic access (1)
 
-### Optimism Bridge (Standard Bridge)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Canonical cross-chain bridge for depositing and withdrawing ETH and ERC-20 tokens between Ethereum L1 and OP Mainnet, secured by the OP Stack StandardBridge contracts. Available as a hosted app and via the Superbridge / Brid.gg interfaces for the full Superchain.
+- [Optimism Agentic Access](https://apis.io/agentic-access/optimism/optimism-agentic-access/)
 
-- **Human URL:** [https://app.optimism.io/bridge](https://app.optimism.io/bridge)
-- **Base URL:** `https://app.optimism.io/bridge`
+#### Collections (2)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Bridge
-- Cross-Chain
-- Canonical
+- [OP Mainnet JSON-RPC](https://apis.io/collections/optimism/open-optimism/)
+- [OP Mainnet JSON-RPC API](https://apis.io/collections/optimism/open-optimism-json-rpc-api/)
 
-#### Properties
+#### Governance rules (1)
 
-- [Documentation](https://docs.optimism.io/app-developers/bridging/standard-bridge)
-- [App](https://app.optimism.io/bridge)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
-### OP Stack
+- [Optimism — asyncapi rules](https://apis.io/rules/optimism/optimism-asyncapi-spectral-rules/)
 
-Open-source, modular Ethereum L2 rollup stack. The monorepo at github.com/ethereum-optimism/optimism contains op-geth (execution), op-node (consensus), op-batcher, op-proposer, op-challenger, op-deployer, op-validator, and fault-proof system used to launch and operate Superchain rollups.
+#### Security (1)
 
-- **Human URL:** [https://stack.optimism.io](https://stack.optimism.io)
-- **Base URL:** `https://github.com/ethereum-optimism/optimism`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Optimism Domain Security](https://apis.io/security/optimism/optimism-domain-security/)
 
-- OP Stack
-- Rollup
-- Open Source
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://docs.optimism.io/stack/getting-started)
-- [Repository](https://github.com/ethereum-optimism/optimism)
-- [Specs](https://specs.optimism.io)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Optimism Plans Pricing](https://apis.io/plans/optimism/optimism-plans-pricing/)
 
-### Superchain Registry
+#### Rate limits (1)
 
-Source-of-truth index of chains that are part of the Optimism Superchain — genesis files, deployment addresses, RPC endpoints, explorers, and chain metadata in machine-readable form.
+Published request limits.
 
-- **Human URL:** [https://github.com/ethereum-optimism/superchain-registry](https://github.com/ethereum-optimism/superchain-registry)
-- **Base URL:** `https://github.com/ethereum-optimism/superchain-registry`
+- [Optimism Rate Limits](https://apis.io/rate-limits/optimism/optimism-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- Superchain
-- Registry
-- Metadata
+What the API costs to run, by operation.
 
-#### Properties
+- [Optimism Finops](https://apis.io/finops/optimism/optimism-finops/)
 
-- [Repository](https://github.com/ethereum-optimism/superchain-registry)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-### Optimism SDK (Viem extension)
-
-Modern Optimism SDK exposed as a Viem extension (viem/op-stack) for L1<->L2 message tracking, deposit and withdrawal flows, fee estimation, and Superchain multi-chain helpers.
-
-- **Human URL:** [https://docs.optimism.io/app-developers/tutorials/bridging/cross-dom-solidity](https://docs.optimism.io/app-developers/tutorials/bridging/cross-dom-solidity)
-- **Base URL:** `https://viem.sh/op-stack`
-
-#### Tags
-
-- SDK
-- TypeScript
-- Viem
-- Cross-Chain
-
-#### Properties
-
-- [Documentation](https://viem.sh/op-stack)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Supersim
-
-Local Superchain simulator that spins up multiple OP Stack chains for developing and testing cross-chain interop messages (CrossL2Inbox / L2ToL2CrossDomainMessenger) before mainnet rollout.
-
-- **Human URL:** [https://docs.optimism.io/stack/interop/tools/supersim](https://docs.optimism.io/stack/interop/tools/supersim)
-- **Base URL:** `https://github.com/ethereum-optimism/supersim`
-
-#### Tags
-
-- Supersim
-- Interop
-- Local Dev
-
-#### Properties
-
-- [Repository](https://github.com/ethereum-optimism/supersim)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Optimism Etherscan
-
-Etherscan-family block explorer for OP Mainnet and OP Sepolia with REST API access for contracts, transactions, and addresses.
-
-- **Human URL:** [https://optimistic.etherscan.io](https://optimistic.etherscan.io)
-- **Base URL:** `https://api-optimistic.etherscan.io/api`
-
-#### Tags
-
-- Block Explorer
-- Etherscan
-- API
-
-#### Properties
-
-- [Documentation](https://docs.optimism.etherscan.io)
-- [Website](https://optimistic.etherscan.io)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Optimism Blockscout
-
-Open-source Blockscout block explorer for OP Mainnet with REST and GraphQL APIs.
-
-- **Human URL:** [https://optimism.blockscout.com](https://optimism.blockscout.com)
-- **Base URL:** `https://optimism.blockscout.com/api`
-
-#### Tags
-
-- Block Explorer
-- Blockscout
-- API
-
-#### Properties
-
-- [Website](https://optimism.blockscout.com)
-- [Postman Collection](collections/optimism.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/optimism.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.optimism.io)
 - [Documentation](https://docs.optimism.io)
-- [Git Hub](https://github.com/ethereum-optimism)
-- [Specs](https://specs.optimism.io)
-- [Superchain Registry](https://github.com/ethereum-optimism/superchain-registry)
-- [Governance](https://gov.optimism.io)
-- [Status](https://status.optimism.io)
-- [Twitter](https://x.com/Optimism)
-- [Discord](https://discord.gg/optimism)
 - [Blog](https://blog.oplabs.co)
-- [L L Ms Txt](https://docs.optimism.io/llms.txt)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 37.0** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 55.9 |
+| Contract governance | 13.6 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 5.3 |
+
+**Agent readiness 30.1** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/optimism/](https://apis.io/providers/optimism/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Optimism: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/optimism/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
